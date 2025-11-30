@@ -12,7 +12,6 @@ function App() {
   const [socket, setSocket] = useState(null);
   const [gameState, setGameState] = useState('login'); // login, nickname, lobby, playing, round_results, finished
   const [user, setUser] = useState(null); // { username, role }
-  const [nickname, setNickname] = useState('');
   const [roomId, setRoomId] = useState('');
   const [players, setPlayers] = useState([]);
   const [error, setError] = useState('');
@@ -135,8 +134,6 @@ function App() {
   };
 
   const handleNicknameSubmit = (displayName) => {
-    setNickname(displayName);
-    
     // Join room with nickname
     socket.emit('join_room', { 
       username: user.username, 
