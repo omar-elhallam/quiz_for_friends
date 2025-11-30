@@ -1,0 +1,155 @@
+/* Lobby: Dark IT Gaming Theme */
+
+/* Main container - Full viewport with dark dotted gradient background */
+.lobby-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(76, 79, 106, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(88, 166, 255, 0.15) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 2px, rgba(255,255,255,0.02) 3px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 2px, rgba(255,255,255,0.02) 3px),
+    linear-gradient(135deg, #0a0818 0%, #1a1635 50%, #131129 100%);
+  background-size: 100%, 100%, 100%, 3px 3px, 3px 3px, 100%;
+  padding: 20px;
+}
+
+/* Lobby box - Semi-transparent container for all lobby content */
+.lobby-box {
+  background: rgba(20, 20, 35, 0.95);
+  border: 2px solid rgba(88, 166, 255, 0.3);
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  max-width: 700px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+/* Main title - Large glowing uppercase heading */
+.lobby-box h1 {
+  color: #ffffff;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+  font-family: 'Courier New', monospace;
+}
+
+/* Room code display - Highlighted box showing the game room code */
+.lobby-room-code {
+  background: rgba(88, 166, 255, 0.1);
+  border: 2px solid rgba(88, 166, 255, 0.4);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #8b949e;
+  font-size: 1rem;
+}
+
+/* Room code number - Large emphasized code display */
+.lobby-room-code strong {
+  display: block;
+  font-size: 2.5rem;
+  color: #58a6ff;
+  margin-top: 10px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 5px;
+  text-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
+}
+
+/* Players section title - Heading for player list */
+.lobby-players h2 {
+  color: #58a6ff;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Player card - Individual player entry in the lobby list */
+.lobby-player-card {
+  background: rgba(13, 17, 23, 0.8);
+  border: 2px solid rgba(88, 166, 255, 0.3);
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+/* Player card hover state - Slide animation and brighter border */
+.lobby-player-card:hover {
+  border-color: rgba(88, 166, 255, 0.6);
+  transform: translateX(5px);
+}
+
+/* Disconnected player - Faded appearance for offline players */
+.lobby-player-card.disconnected {
+  opacity: 0.4;
+  border-color: rgba(139, 148, 158, 0.2);
+}
+
+/* Player card icon - Green arrow indicator before player name */
+.lobby-player-card::before {
+  content: "▶";
+  color: #7ee787;
+  margin-right: 15px;
+  font-size: 0.8rem;
+}
+
+/* Waiting message - Green info box for game start status */
+.lobby-waiting {
+  background: rgba(126, 231, 135, 0.1);
+  border: 2px solid rgba(126, 231, 135, 0.3);
+  color: #7ee787;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1rem;
+}
+
+/* Start game button - Large blue button for admin to start game */
+.lobby-button {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #58a6ff 0%, #4c6fff 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 4px 15px rgba(88, 166, 255, 0.4);
+  margin-top: 20px;
+}
+
+/* Button hover state - Lift animation with enhanced shadow */
+.lobby-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(88, 166, 255, 0.6);
+}
+
+/* Button disabled state - Faded appearance when not enough players */
+.lobby-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}

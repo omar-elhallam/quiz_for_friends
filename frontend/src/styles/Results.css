@@ -1,0 +1,363 @@
+/* Results: Dark IT Gaming Theme */
+
+/* Main container - Full viewport with dark dotted gradient background */
+.results-container {
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(76, 79, 106, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(88, 166, 255, 0.15) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 2px, rgba(255,255,255,0.02) 3px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 2px, rgba(255,255,255,0.02) 3px),
+    linear-gradient(135deg, #0a0818 0%, #1a1635 50%, #131129 100%);
+  background-size: 100%, 100%, 100%, 3px 3px, 3px 3px, 100%;
+  padding: 30px 20px;
+  overflow-y: auto;
+}
+
+/* Header section - Top area containing title and winner announcement */
+.results-header {
+  max-width: 1400px;
+  margin: 0 auto 30px;
+}
+
+/* Page title - Large glowing 'Results' heading */
+.results-title {
+  color: #ffffff;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+  font-family: 'Courier New', monospace;
+}
+
+/* Winner box - Gold highlighted box announcing the round winner */
+.results-winner-box {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 191, 0, 0.2) 100%);
+  border: 3px solid #ffd700;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  margin: 0 auto 40px;
+  max-width: 600px;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+}
+
+/* Winner name - Large gold text showing winner's name */
+.results-winner-box h2 {
+  color: #ffd700;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+/* Winner score - Score display for the winning player */
+.results-winner-score {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+/* Correct answer display - Green box showing the right answer */
+.results-correct-answer {
+  background: rgba(126, 231, 135, 0.2);
+  border: 2px solid #7ee787;
+  color: #7ee787;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Main content - 3-column grid layout (answers | question | leaderboard) */
+.results-main-content {
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
+  gap: 20px;
+  max-width: 1600px;
+  margin: 30px auto 30px;
+  padding: 0 20px;
+}
+
+/* Left and right sections - Containers for answers and leaderboard */
+.results-left-section,
+.results-right-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section headings - Blue titles for each column */
+.results-left-section h3,
+.results-right-section h2,
+.results-center-section h3 {
+  color: #58a6ff;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Answers container - Scrollable list of player answers */
+.results-answers {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+/* Center section - Middle column displaying the question */
+.results-center-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Question display - Box containing question image/text/audio */
+.results-question-display {
+  background: rgba(20, 20, 35, 0.9);
+  border: 3px solid rgba(88, 166, 255, 0.4);
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Question image - Image display with border and shadow */
+.results-question-image {
+  max-width: 100%;
+  max-height: 500px;
+  border-radius: 10px;
+  border: 2px solid rgba(88, 166, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Question text - Large text display for text-based questions */
+.results-question-text {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.6;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+}
+
+/* Audio display - Container for audio question elements */
+.results-audio-display {
+  text-align: center;
+}
+
+/* Audio description text - Gray text for audio questions */
+.results-audio-display p {
+  color: #8b949e;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Audio player - HTML5 audio element with inverted colors */
+.results-audio-player {
+  width: 100%;
+  max-width: 500px;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Answer card - Individual player's answer with name and points */
+.results-answer-card {
+  background: rgba(20, 20, 35, 0.9);
+  border: 2px solid rgba(88, 166, 255, 0.3);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+/* Answer card hover - Slide animation and brighter border */
+.results-answer-card:hover {
+  transform: translateX(5px);
+  border-color: rgba(88, 166, 255, 0.6);
+}
+
+/* Correct answer - Green border and background for right answers */
+.results-answer-card.correct {
+  border-color: #7ee787;
+  background: rgba(126, 231, 135, 0.1);
+}
+
+/* Incorrect answer - Red border and background for wrong answers */
+.results-answer-card.incorrect {
+  border-color: #f85149;
+  background: rgba(248, 81, 73, 0.1);
+}
+
+/* Disconnected player answer - Faded appearance */
+.results-answer-card.disconnected {
+  opacity: 0.4;
+}
+
+/* Player name in answer card - Bold white text */
+.results-answer-card strong {
+  color: #ffffff;
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Answer text - Gray monospace text showing player's answer */
+.results-answer-text {
+  color: #8b949e;
+  font-size: 1rem;
+  font-family: 'Courier New', monospace;
+}
+
+/* Points display - Blue glowing points earned this round */
+.results-points {
+  color: #58a6ff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+}
+
+/* Correct answer points - Green color for earned points */
+.results-answer-card.correct .results-points {
+  color: #7ee787;
+  text-shadow: 0 0 10px rgba(126, 231, 135, 0.5);
+}
+
+/* Incorrect answer points - Red color for no points */
+.results-answer-card.incorrect .results-points {
+  color: #f85149;
+  text-shadow: 0 0 10px rgba(248, 81, 73, 0.5);
+}
+
+/* Leaderboard list - Scrollable container for ranked players */
+.results-leaderboard-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+/* Leaderboard item - Individual player entry in rankings */
+.results-leaderboard-item {
+  background: rgba(20, 20, 35, 0.9);
+  border: 2px solid rgba(88, 166, 255, 0.3);
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3rem;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+/* Leaderboard item hover - Slide animation and brighter border */
+.results-leaderboard-item:hover {
+  transform: translateX(5px);
+  border-color: rgba(88, 166, 255, 0.6);
+}
+
+/* Disconnected player in leaderboard - Faded appearance */
+.results-leaderboard-item.disconnected {
+  opacity: 0.4;
+}
+
+/* First place - Gold gradient for top player */
+.results-leaderboard-item.first {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 191, 0, 0.2) 100%);
+  border-color: #ffd700;
+  font-weight: 800;
+  font-size: 1.5rem;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+/* Second place - Silver gradient for runner-up */
+.results-leaderboard-item.second {
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.2) 0%, rgba(169, 169, 169, 0.2) 100%);
+  border-color: #c0c0c0;
+  font-weight: 700;
+}
+
+/* Third place - Bronze gradient for third player */
+.results-leaderboard-item.third {
+  background: linear-gradient(135deg, rgba(205, 127, 50, 0.2) 0%, rgba(184, 115, 51, 0.2) 100%);
+  border-color: #cd7f32;
+  font-weight: 700;
+}
+
+/* Leaderboard score - Green glowing total score display */
+.results-leaderboard-score {
+  color: #7ee787;
+  font-weight: 800;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px rgba(126, 231, 135, 0.5);
+}
+
+/* First place score - Gold color for winner's score */
+.results-leaderboard-item.first .results-leaderboard-score {
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+/* Footer section - Bottom area containing next button */
+.results-footer {
+  max-width: 600px;
+  margin: 30px auto 0;
+  text-align: center;
+}
+
+/* Next button - Blue button to proceed to next round */
+.results-next-btn {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(135deg, #58a6ff 0%, #4c6fff 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 4px 15px rgba(88, 166, 255, 0.4);
+}
+
+/* Next button hover - Lift animation with enhanced shadow */
+.results-next-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(88, 166, 255, 0.6);
+}
+
+/* Waiting message - Green info box while waiting for admin */
+.results-waiting {
+  background: rgba(126, 231, 135, 0.1);
+  border: 2px solid rgba(126, 231, 135, 0.3);
+  color: #7ee787;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}

@@ -1,0 +1,149 @@
+/* NicknameScreen: Dark IT Gaming Theme */
+
+/* Main container - Full viewport with dark dotted gradient background */
+.nickname-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(76, 79, 106, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(88, 166, 255, 0.15) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 2px, rgba(255,255,255,0.02) 3px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 2px, rgba(255,255,255,0.02) 3px),
+    linear-gradient(135deg, #0a0818 0%, #1a1635 50%, #131129 100%);
+  background-size: 100%, 100%, 100%, 3px 3px, 3px 3px, 100%;
+  padding: 20px;
+}
+
+/* Nickname form box - Semi-transparent container with animation */
+.nickname-box {
+  background: rgba(20, 20, 35, 0.95);
+  border: 2px solid rgba(88, 166, 255, 0.3);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  animation: slideIn 0.5s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+/* Slide-in animation for nickname box entrance */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main title - Large glowing uppercase heading */
+.nickname-box h1 {
+  margin: 0 0 10px 0;
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+  font-family: 'Courier New', monospace;
+}
+
+/* Subtitle - Secondary heading with instructions */
+.nickname-box h2 {
+  margin: 0 0 30px 0;
+  color: #8b949e;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Info box - Blue highlighted informational section */
+.nickname-info {
+  background: rgba(88, 166, 255, 0.1);
+  border-left: 4px solid #58a6ff;
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  color: #8b949e;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+/* Form container - Wrapper for nickname input and button */
+.nickname-form {
+  width: 100%;
+}
+
+/* Form label - Text label above input field */
+.nickname-form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Text input field - Dark background with blue border */
+.nickname-form input {
+  width: 100%;
+  padding: 15px;
+  background: rgba(13, 17, 23, 0.8);
+  border: 2px solid rgba(88, 166, 255, 0.3);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #c9d1d9;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Input focus state - Brighter border and glowing shadow */
+.nickname-form input:focus {
+  outline: none;
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2), inset 0 0 5px rgba(88, 166, 255, 0.1);
+  background: rgba(13, 17, 23, 0.95);
+}
+
+/* Submit button - Blue gradient with shadow effect */
+.nickname-form button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #58a6ff 0%, #4c6fff 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(88, 166, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Button hover state - Lift animation with enhanced shadow */
+.nickname-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(88, 166, 255, 0.6);
+}
+
+/* Button active state - Reduced lift when clicking */
+.nickname-form button:active {
+  transform: translateY(0);
+}
+
+/* Button disabled state - Faded appearance, not clickable */
+.nickname-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
