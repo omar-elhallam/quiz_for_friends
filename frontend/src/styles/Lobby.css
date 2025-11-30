@@ -2,7 +2,7 @@
 
 /* Main container - Full viewport with dark dotted gradient background */
 .lobby-container {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,31 +14,34 @@
     repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 2px, rgba(255,255,255,0.02) 3px),
     linear-gradient(135deg, #0a0818 0%, #1a1635 50%, #131129 100%);
   background-size: 100%, 100%, 100%, 3px 3px, 3px 3px, 100%;
-  padding: 20px;
+  padding: 2vh 2vw;
+  overflow: hidden;
 }
 
 /* Lobby box - Semi-transparent container for all lobby content */
 .lobby-box {
   background: rgba(20, 20, 35, 0.95);
   border: 2px solid rgba(88, 166, 255, 0.3);
-  border-radius: 10px;
-  padding: 40px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  max-width: 700px;
+  border-radius: 1vh;
+  padding: 2vh 2vw;
+  box-shadow: 0 2vh 6vh rgba(0, 0, 0, 0.5), inset 0 0.1vh 0 rgba(255, 255, 255, 0.1);
+  max-width: 40vw;
   width: 100%;
   backdrop-filter: blur(10px);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 /* Main title - Large glowing uppercase heading */
 .lobby-box h1 {
   color: #ffffff;
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
+  font-size: 2vw;
+  margin-bottom: 2vh;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+  letter-spacing: 0.2vw;
+  text-shadow: 0 0 2vh rgba(88, 166, 255, 0.5);
   font-family: 'Courier New', monospace;
 }
 
@@ -46,32 +49,32 @@
 .lobby-room-code {
   background: rgba(88, 166, 255, 0.1);
   border: 2px solid rgba(88, 166, 255, 0.4);
-  padding: 20px;
-  border-radius: 10px;
+  padding: 1.5vh 1vw;
+  border-radius: 1vh;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 2vh;
   color: #8b949e;
-  font-size: 1rem;
+  font-size: 0.9vw;
 }
 
 /* Room code number - Large emphasized code display */
 .lobby-room-code strong {
   display: block;
-  font-size: 2.5rem;
+  font-size: 1.8vw;
   color: #58a6ff;
-  margin-top: 10px;
+  margin-top: 0.5vh;
   font-family: 'Courier New', monospace;
-  letter-spacing: 5px;
-  text-shadow: 0 0 15px rgba(88, 166, 255, 0.5);
+  letter-spacing: 0.3vw;
+  text-shadow: 0 0 1.5vh rgba(88, 166, 255, 0.5);
 }
 
 /* Players section title - Heading for player list */
 .lobby-players h2 {
   color: #58a6ff;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  font-size: 1.2vw;
+  margin-bottom: 1vh;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.1vw;
   font-family: 'Courier New', monospace;
 }
 
@@ -79,11 +82,11 @@
 .lobby-player-card {
   background: rgba(13, 17, 23, 0.8);
   border: 2px solid rgba(88, 166, 255, 0.3);
-  border-radius: 8px;
-  padding: 15px 20px;
-  margin-bottom: 12px;
+  border-radius: 0.5vh;
+  padding: 1vh 1.5vw;
+  margin-bottom: 0.8vh;
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 0.95vw;
   font-weight: 600;
   transition: all 0.3s ease;
   display: flex;
@@ -93,7 +96,7 @@
 /* Player card hover state - Slide animation and brighter border */
 .lobby-player-card:hover {
   border-color: rgba(88, 166, 255, 0.6);
-  transform: translateX(5px);
+  transform: translateX(0.5vw);
 }
 
 /* Disconnected player - Faded appearance for offline players */
@@ -106,8 +109,8 @@
 .lobby-player-card::before {
   content: "▶";
   color: #7ee787;
-  margin-right: 15px;
-  font-size: 0.8rem;
+  margin-right: 1vw;
+  font-size: 0.7vw;
 }
 
 /* Waiting message - Green info box for game start status */
@@ -115,36 +118,36 @@
   background: rgba(126, 231, 135, 0.1);
   border: 2px solid rgba(126, 231, 135, 0.3);
   color: #7ee787;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 1vh 1vw;
+  border-radius: 0.5vh;
   text-align: center;
-  margin: 20px 0;
-  font-size: 1rem;
+  margin: 1.5vh 0;
+  font-size: 0.9vw;
 }
 
 /* Start game button - Large blue button for admin to start game */
 .lobby-button {
   width: 100%;
-  padding: 18px;
+  padding: 1.5vh 1vw;
   background: linear-gradient(135deg, #58a6ff 0%, #4c6fff 100%);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1.2rem;
+  border-radius: 0.5vh;
+  font-size: 1.1vw;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.1vw;
   font-family: 'Courier New', monospace;
-  box-shadow: 0 4px 15px rgba(88, 166, 255, 0.4);
-  margin-top: 20px;
+  box-shadow: 0 0.4vh 1.5vh rgba(88, 166, 255, 0.4);
+  margin-top: 1.5vh;
 }
 
 /* Button hover state - Lift animation with enhanced shadow */
 .lobby-button:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(88, 166, 255, 0.6);
+  transform: translateY(-0.3vh);
+  box-shadow: 0 1vh 3vh rgba(88, 166, 255, 0.6);
 }
 
 /* Button disabled state - Faded appearance when not enough players */

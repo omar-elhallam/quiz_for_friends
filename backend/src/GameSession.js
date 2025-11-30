@@ -12,8 +12,8 @@ class GameSession {
     this.questions = questions; // Use questions in original order
     this.roundStartTime = null;
     this.roundTimer = null;
-    this.roundDuration = 20000; // 20 seconds per round
-    this.answers = new Map(); // username -> {answer, timestamp}
+    this.answers = new Map(); // username -> {answer, timestamp, attempts: []}
+    this.roundLives = new Map(); // username -> lives remaining (for current round)
   }
 
   setAdmin(socketId, username) {
@@ -141,28 +141,56 @@ class GameSession {
     }
 
     this.answers.clear();
-    this.roundStartTime = Date.now();
-    this.gameState = 'playing';
+    this.roundLives.clear();
+    // Initialize 3 lives for each player
+    for (const username of this.players.keys()) {
+      this.roundLives.set(username, 3);
+    }
 
     const question = this.getCurrentQuestion();
     
-    // Send question to all players (without the correct answer)
-    this.io.to(this.roomId).emit('new_round', {
+    // Emit countdown event
+    this.io.to(this.roomId).emit('countdown_start', {
       round: this.currentRound + 1,
-      totalRounds: this.questions.length,
-      question: {
-        type: question.type,
-        questionType: question.questionType,
-        content: question.content,
-        options: question.options || null
-      },
-      duration: this.roundDuration
+      totalRounds: this.questions.length
     });
 
-    // Set timer for round end
-    this.roundTimer = setTimeout(() => {
-      this.endRound();
-    }, this.roundDuration);
+    // Start countdown: 3, 2, 1
+    let countdown = 3;
+    const countdownInterval = setInterval(() => {
+      this.io.to(this.roomId).emit('countdown_tick', { count: countdown });
+      countdown--;
+      
+      if (countdown < 0) {
+        clearInterval(countdownInterval);
+        
+        // Now actually start the round
+        this.roundStartTime = Date.now();
+        this.gameState = 'playing';
+        
+        // Send question to all players (without the correct answer)
+        const roundDuration = this.getRoundDuration();
+        this.io.to(this.roomId).emit('new_round', {
+          round: this.currentRound + 1,
+          totalRounds: this.questions.length,
+          question: {
+            type: question.type,
+            questionType: question.questionType,
+            content: question.content,
+            options: question.options || null
+          },
+          duration: roundDuration
+        });
+
+        // Broadcast initial player states with reset lives
+        this.broadcastPlayerStates();
+
+        // Set timer for round end
+        this.roundTimer = setTimeout(() => {
+          this.endRound();
+        }, roundDuration);
+      }
+    }, 1000);
   }
 
   submitAnswer(socketId, answer) {
@@ -183,29 +211,91 @@ class GameSession {
 
     // Use username (not nickname) as key
     const username = player.username;
+    const question = this.getCurrentQuestion();
 
-    // Check if player already answered
-    if (this.answers.has(username)) {
-      return;
+    // For QCM, only allow one submission
+    if (question.questionType === 'qcm') {
+      if (this.answers.has(username)) {
+        return;
+      }
+      const timestamp = Date.now();
+      this.answers.set(username, { answer, timestamp, attempts: [answer] });
+      this.io.to(socketId).emit('answer_submitted', { success: true, finalAnswer: true });
+    } else {
+      // For open-ended, allow 3 attempts
+      const lives = this.roundLives.get(username) || 3;
+      
+      // Check if player has already given a final answer
+      const existingData = this.answers.get(username);
+      if (lives <= 0 || (existingData && existingData.answer !== null)) {
+        return; // No more attempts or already answered correctly/exhausted lives
+      }
+
+      const timestamp = Date.now();
+      const isCorrect = this.checkAnswer(answer, question);
+      
+      if (isCorrect) {
+        // Correct answer - save and mark as complete
+        const attempts = existingData ? [...existingData.attempts, answer] : [answer];
+        this.answers.set(username, { answer, timestamp, attempts });
+        this.io.to(socketId).emit('answer_submitted', { 
+          success: true, 
+          correct: true, 
+          finalAnswer: true,
+          livesRemaining: lives
+        });
+      } else {
+        // Wrong answer - decrement lives and store attempt
+        const newLives = lives - 1;
+        this.roundLives.set(username, newLives);
+        
+        // Store this wrong attempt
+        const attempts = existingData ? [...existingData.attempts, answer] : [answer];
+        
+        if (newLives <= 0) {
+          // Out of lives - record final wrong answer
+          this.answers.set(username, { answer, timestamp, attempts });
+          this.io.to(socketId).emit('answer_submitted', { 
+            success: true, 
+            correct: false, 
+            finalAnswer: true,
+            livesRemaining: 0
+          });
+        } else {
+          // Still have lives - save attempts so far but don't mark as final (answer: null)
+          this.answers.set(username, { answer: null, timestamp, attempts });
+          this.io.to(socketId).emit('answer_submitted', { 
+            success: true, 
+            correct: false, 
+            finalAnswer: false,
+            livesRemaining: newLives
+          });
+        }
+      }
     }
 
-    const timestamp = Date.now();
-    this.answers.set(username, { answer, timestamp });
-
-    // Acknowledge answer received
-    this.io.to(socketId).emit('answer_submitted', { success: true });
+    // Broadcast updated lives to all players
+    this.broadcastPlayerStates();
 
     // Count connected players
     const connectedCount = this.getPlayerCount();
 
+    // Count players who have given final answers (answer !== null means they're done)
+    let finalAnswerCount = 0;
+    for (const [username, data] of this.answers.entries()) {
+      if (data.answer !== null) {
+        finalAnswerCount++;
+      }
+    }
+
     // Notify admin about answer count
     this.io.to(this.adminSocketId).emit('answer_count', {
-      answered: this.answers.size,
+      answered: finalAnswerCount,
       total: connectedCount
     });
 
-    // Check if all connected players have answered
-    if (this.answers.size === connectedCount) {
+    // Check if all connected players have given their final answer
+    if (finalAnswerCount === connectedCount) {
       clearTimeout(this.roundTimer);
       this.endRound();
     }
@@ -230,7 +320,7 @@ class GameSession {
 
   calculateScores(question) {
     const results = [];
-    const timeLimit = this.roundDuration;
+    const timeLimit = this.getRoundDuration();
 
     for (const [username, answerData] of this.answers.entries()) {
       const player = this.players.get(username);
@@ -248,13 +338,19 @@ class GameSession {
         player.score += points;
       }
 
+      const attemptsCount = question.questionType === 'qcm' ? 1 : (3 - (this.roundLives.get(username) || 0) + (isCorrect ? 1 : 0));
+      const attemptsList = answerData.attempts || [answerData.answer];
+      
       results.push({
         playerName: player.name,
         answer: answerData.answer,
         isCorrect,
         points,
         timeElapsed: Math.round(timeElapsed / 1000),
-        connected: player.connected
+        connected: player.connected,
+        attempts: attemptsCount,
+        attemptsList: attemptsList,
+        questionType: question.questionType
       });
     }
 
@@ -267,7 +363,9 @@ class GameSession {
           isCorrect: false,
           points: 0,
           timeElapsed: null,
-          connected: player.connected
+          connected: player.connected,
+          attempts: 0,
+          questionType: question.questionType
         });
       }
     }
@@ -285,18 +383,14 @@ class GameSession {
       // Exact match for multiple choice
       return givenAnswer === correctAnswer;
     } else {
-      // For open-ended, check if answer contains the correct answer or vice versa
-      // Also check against alternative answers if provided
+      // For open-ended, require exact match with correct answer or alternatives
       if (givenAnswer === correctAnswer) return true;
-      if (correctAnswer.includes(givenAnswer) || givenAnswer.includes(correctAnswer)) return true;
       
-      // Check alternatives
+      // Check alternatives (exact match only)
       if (question.alternatives) {
         for (const alt of question.alternatives) {
           const altLower = alt.toLowerCase().trim();
-          if (givenAnswer === altLower || 
-              altLower.includes(givenAnswer) || 
-              givenAnswer.includes(altLower)) {
+          if (givenAnswer === altLower) {
             return true;
           }
         }
@@ -333,6 +427,37 @@ class GameSession {
 
   getCurrentQuestion() {
     return this.questions[this.currentRound];
+  }
+
+  getRoundDuration() {
+    const question = this.getCurrentQuestion();
+    if (question.type === 'audio') {
+      return 60000; // 60 seconds for audio questions
+    } else if (question.type === 'image') {
+      return 30000; // 30 seconds for image questions
+    }
+    return 20000; // 20 seconds for text and review questions
+  }
+
+  broadcastPlayerStates() {
+    const question = this.getCurrentQuestion();
+    const playerStates = Array.from(this.players.values()).map(player => {
+      const answerData = this.answers.get(player.username);
+      const hasAnswered = !!answerData;
+      const isCorrect = hasAnswered && answerData.answer ? this.checkAnswer(answerData.answer, question) : false;
+      
+      return {
+        username: player.username,
+        name: player.name,
+        score: player.score,
+        connected: player.connected,
+        lives: this.roundLives.get(player.username) || 3,
+        hasAnswered: hasAnswered,
+        answeredCorrectly: isCorrect
+      };
+    });
+    
+    this.io.to(this.roomId).emit('player_states', { players: playerStates });
   }
 
   endGame() {

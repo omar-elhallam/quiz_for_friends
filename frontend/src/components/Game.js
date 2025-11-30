@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Game.css';
 
-function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAdmin, answerCount, players }) {
+function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAdmin, answerCount, players, countdown, isCountdown }) {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [textAnswer, setTextAnswer] = useState('');
   const [lightboxImage, setLightboxImage] = useState(null);
@@ -48,6 +48,13 @@ function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAd
 
   return (
     <div className="game-container">
+      {/* Countdown Overlay */}
+      {isCountdown && countdown !== null && (
+        <div className="countdown-overlay">
+          <div className="countdown-number">{countdown}</div>
+        </div>
+      )}
+
       {/* Player Sidebar */}
       <div className="game-players-sidebar">
         <h3>Players</h3>
@@ -56,6 +63,23 @@ function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAd
             <div className="game-player-username">{player.username || `Player${index + 1}`}</div>
             <div className="game-player-nickname">{player.name}</div>
             <div className="game-player-score">{player.score || 0} pts</div>
+            {question && question.questionType !== 'qcm' && (
+              <div className="game-player-lives">
+                {[1, 2, 3].map(lifeNum => {
+                  let boxClass = 'game-life-box';
+                  const livesLost = 3 - (player.lives !== undefined ? player.lives : 3);
+                  
+                  if (lifeNum <= livesLost) {
+                    // This life was lost (red)
+                    boxClass += ' lost';
+                  } else if (player.answeredCorrectly && lifeNum === livesLost + 1) {
+                    // First remaining life turns green when correct
+                    boxClass += ' correct';
+                  }
+                  return <div key={lifeNum} className={boxClass} />;
+                })}
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -84,7 +108,7 @@ function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAd
             </div>
           )}
           
-          {question.type === 'audio' && (
+          {question.type === 'audio' && !isCountdown && (
             <div className="game-question-audio">
               <p>🎵 Listen to the audio:</p>
               <audio controls autoPlay src={`/audio/${question.content}`} className="game-audio-player">
@@ -93,7 +117,14 @@ function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAd
             </div>
           )}
           
-          {(question.type === 'text' || question.type === 'review') && (
+          {question.type === 'review' && (
+            <div className="game-image-wrapper" onClick={() => setLightboxImage({ src: `/steamreviews/${question.content}`, alt: 'Steam Review' })}>
+              <img src={`/steamreviews/${question.content}`} alt="Steam Review" className="game-question-image" />
+              <div className="game-image-zoom-icon">🔍</div>
+            </div>
+          )}
+          
+          {question.type === 'text' && (
             <p className="game-question-text">{question.content}</p>
           )}
         </div>

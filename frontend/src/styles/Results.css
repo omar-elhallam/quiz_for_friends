@@ -2,7 +2,7 @@
 
 /* Main container - Full viewport with dark dotted gradient background */
 .results-container {
-  min-height: 100vh;
+  height: 100vh;
   background: 
     radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(76, 79, 106, 0.2) 0%, transparent 50%),
@@ -11,56 +11,56 @@
     repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 2px, rgba(255,255,255,0.02) 3px),
     linear-gradient(135deg, #0a0818 0%, #1a1635 50%, #131129 100%);
   background-size: 100%, 100%, 100%, 3px 3px, 3px 3px, 100%;
-  padding: 30px 20px;
+  padding: 1.5vh 1.5vw;
   overflow-y: auto;
 }
 
 /* Header section - Top area containing title and winner announcement */
 .results-header {
-  max-width: 1400px;
-  margin: 0 auto 30px;
+  max-width: 90vw;
+  margin: 0 auto 1.5vh;
 }
 
 /* Page title - Large glowing 'Results' heading */
 .results-title {
   color: #ffffff;
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 1.6vw;
+  margin-bottom: 1vh;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+  letter-spacing: 0.2vw;
+  text-shadow: 0 0 2vh rgba(88, 166, 255, 0.5);
   font-family: 'Courier New', monospace;
 }
 
 /* Winner box - Gold highlighted box announcing the round winner */
 .results-winner-box {
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 191, 0, 0.2) 100%);
-  border: 3px solid #ffd700;
-  border-radius: 15px;
-  padding: 40px;
+  border: 2px solid #ffd700;
+  border-radius: 1vh;
+  padding: 2vh 2vw;
   text-align: center;
-  margin: 0 auto 40px;
-  max-width: 600px;
-  box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+  margin: 0 auto 2vh;
+  max-width: 40vw;
+  box-shadow: 0 0 5vh rgba(255, 215, 0, 0.3);
 }
 
 /* Winner name - Large gold text showing winner's name */
 .results-winner-box h2 {
   color: #ffd700;
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  font-size: 2vw;
+  margin-bottom: 1vh;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.1vw;
   font-family: 'Courier New', monospace;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+  text-shadow: 0 0 2vh rgba(255, 215, 0, 0.7);
 }
 
 /* Winner score - Score display for the winning player */
 .results-winner-score {
   color: #ffffff;
-  font-size: 1.8rem;
+  font-size: 1.5vw;
   font-weight: 700;
   font-family: 'Courier New', monospace;
 }
@@ -70,24 +70,25 @@
   background: rgba(126, 231, 135, 0.2);
   border: 2px solid #7ee787;
   color: #7ee787;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 1.5vh 1.5vw;
+  border-radius: 0.8vh;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1vw;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.1vw;
   font-family: 'Courier New', monospace;
 }
 
 /* Main content - 3-column grid layout (answers | question | leaderboard) */
 .results-main-content {
   display: grid;
-  grid-template-columns: 300px 1fr 300px;
-  gap: 20px;
-  max-width: 1600px;
-  margin: 30px auto 30px;
-  padding: 0 20px;
+  grid-template-columns: 22vw 1fr 22vw;
+  gap: 1.5vw;
+  max-width: 95vw;
+  margin: 1.5vh auto;
+  padding: 0 1vw;
+  height: 65vh;
 }
 
 /* Left and right sections - Containers for answers and leaderboard */
@@ -102,10 +103,10 @@
 .results-right-section h2,
 .results-center-section h3 {
   color: #58a6ff;
-  font-size: 1.3rem;
-  margin-bottom: 15px;
+  font-size: 1vw;
+  margin-bottom: 0.8vh;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.1vw;
   font-family: 'Courier New', monospace;
 }
 
@@ -113,7 +114,7 @@
 .results-answers {
   flex: 1;
   overflow-y: auto;
-  max-height: 600px;
+  max-height: 100%;
 }
 
 /* Center section - Middle column displaying the question */
@@ -160,6 +161,7 @@
 /* Audio display - Container for audio question elements */
 .results-audio-display {
   text-align: center;
+  width: 100%;
 }
 
 /* Audio description text - Gray text for audio questions */
@@ -172,7 +174,6 @@
 /* Audio player - HTML5 audio element with inverted colors */
 .results-audio-player {
   width: 100%;
-  max-width: 500px;
   filter: invert(1) hue-rotate(180deg);
 }
 
@@ -180,20 +181,16 @@
 .results-answer-card {
   background: rgba(20, 20, 35, 0.9);
   border: 2px solid rgba(88, 166, 255, 0.3);
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 15px;
+  border-radius: 0.5vh;
+  padding: 0.8vh 1vw;
+  margin-bottom: 0.6vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
 }
 
-/* Answer card hover - Slide animation and brighter border */
-.results-answer-card:hover {
-  transform: translateX(5px);
-  border-color: rgba(88, 166, 255, 0.6);
-}
+
 
 /* Correct answer - Green border and background for right answers */
 .results-answer-card.correct {
@@ -215,25 +212,90 @@
 /* Player name in answer card - Bold white text */
 .results-answer-card strong {
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 0.85vw;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0.3vh;
 }
 
 /* Answer text - Gray monospace text showing player's answer */
 .results-answer-text {
   color: #8b949e;
-  font-size: 1rem;
+  font-size: 0.75vw;
   font-family: 'Courier New', monospace;
+}
+
+/* Attempts list container - Shows all answer attempts */
+.results-attempts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3vh;
+  margin-top: 0.4vh;
+}
+
+/* Individual attempt item - Each answer attempt */
+.results-attempt-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+}
+
+/* Attempt number indicator - Shows 1., 2., 3. */
+.results-attempt-number {
+  color: #8b949e;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  min-width: 1.2vw;
+  font-size: 0.7vw;
+}
+
+/* Wrong attempt number - Red color for incorrect attempts */
+.results-attempt-number.wrong {
+  color: #f85149;
+}
+
+/* Correct attempt number - Green color for successful attempt */
+.results-attempt-number.correct {
+  color: #7ee787;
+}
+
+/* Life squares container in results - Shows attempt count */
+.results-player-lives {
+  display: flex;
+  gap: 0.3vw;
+  margin-top: 0.4vh;
+}
+
+/* Individual life box in results - Small square indicators */
+.results-life-box {
+  width: 0.9vw;
+  height: 0.9vw;
+  border: 1px solid rgba(88, 166, 255, 0.5);
+  border-radius: 0.2vh;
+  background: rgba(88, 166, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Lost life box in results - Red for wrong attempts */
+.results-life-box.lost {
+  background: rgba(248, 81, 73, 0.4);
+  border-color: #f85149;
+  box-shadow: 0 0 8px rgba(248, 81, 73, 0.5);
+}
+
+/* Correct attempt life box in results - Green for successful answer */
+.results-life-box.correct {
+  background: rgba(126, 231, 135, 0.4);
+  border-color: #7ee787;
+  box-shadow: 0 0 8px rgba(126, 231, 135, 0.5);
 }
 
 /* Points display - Blue glowing points earned this round */
 .results-points {
   color: #58a6ff;
-  font-size: 1.5rem;
+  font-size: 1vw;
   font-weight: 800;
   font-family: 'Courier New', monospace;
-  text-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+  text-shadow: 0 0 0.8vh rgba(88, 166, 255, 0.5);
 }
 
 /* Correct answer points - Green color for earned points */
@@ -270,11 +332,7 @@
   transition: all 0.3s ease;
 }
 
-/* Leaderboard item hover - Slide animation and brighter border */
-.results-leaderboard-item:hover {
-  transform: translateX(5px);
-  border-color: rgba(88, 166, 255, 0.6);
-}
+
 
 /* Disconnected player in leaderboard - Faded appearance */
 .results-leaderboard-item.disconnected {

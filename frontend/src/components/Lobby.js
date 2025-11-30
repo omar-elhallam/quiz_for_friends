@@ -8,8 +8,6 @@ function Lobby({ roomId, players, isAdmin, onStartGame }) {
         <h1>🎮 Waiting Room</h1>
         
         <div className="lobby-room-code">
-          Share this code with your friends!
-          <br />
           <strong>{roomId}</strong>
         </div>
         

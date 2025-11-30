@@ -36,10 +36,41 @@ function Results({ roundResults, leaderboard, winner, isGameFinished, isAdmin, o
                       {result.playerName} {result.connected === false && '(Disconnected)'}
                     </strong>
                     <br />
-                    <span className="results-answer-text">
-                      {result.answer || 'No answer'} 
-                      {result.timeElapsed !== null && ` (${result.timeElapsed}s)`}
-                    </span>
+                    {result.attemptsList && result.attemptsList.length > 0 ? (
+                      <div className="results-attempts-list">
+                        {result.attemptsList.map((attempt, attemptIndex) => (
+                          <div key={attemptIndex} className="results-attempt-item">
+                            <span className={`results-attempt-number ${attemptIndex === result.attemptsList.length - 1 && result.isCorrect ? 'correct' : 'wrong'}`}>
+                              {attemptIndex + 1}.
+                            </span>
+                            <span className="results-answer-text">
+                              {attempt}
+                              {attemptIndex === result.attemptsList.length - 1 && result.timeElapsed !== null && ` (${result.timeElapsed}s)`}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <span className="results-answer-text">
+                        {result.answer || 'No answer'} 
+                        {result.timeElapsed !== null && ` (${result.timeElapsed}s)`}
+                      </span>
+                    )}
+                    {result.questionType !== 'qcm' && result.attempts > 0 && (
+                      <div className="results-player-lives">
+                        {[1, 2, 3].map(lifeNum => {
+                          let boxClass = 'results-life-box';
+                          if (lifeNum < result.attempts) {
+                            boxClass += ' lost';
+                          } else if (lifeNum === result.attempts && result.isCorrect) {
+                            boxClass += ' correct';
+                          } else if (lifeNum === result.attempts && !result.isCorrect) {
+                            boxClass += ' lost';
+                          }
+                          return <div key={lifeNum} className={boxClass} />;
+                        })}
+                      </div>
+                    )}
                   </div>
                   <div className="results-points">
                     {result.isCorrect ? '✓' : '✗'} +{result.points}
@@ -65,7 +96,10 @@ function Results({ roundResults, leaderboard, winner, isGameFinished, isAdmin, o
                   </audio>
                 </div>
               )}
-              {(question.type === 'text' || question.type === 'review') && (
+              {question.type === 'review' && (
+                <img src={`/steamreviews/${question.content}`} alt="Steam Review" className="results-question-image" />
+              )}
+              {question.type === 'text' && (
                 <p className="results-question-text">{question.content}</p>
               )}
             </div>

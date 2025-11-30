@@ -23,6 +23,7 @@ function App() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [winner, setWinner] = useState(null);
   const [answerCount, setAnswerCount] = useState({ answered: 0, total: 0 });
+  const [countdown, setCountdown] = useState(null);
 
   useEffect(() => {
     const newSocket = io(SERVER_URL);
@@ -48,6 +49,15 @@ function App() {
       setGameState('playing');
     });
 
+    newSocket.on('countdown_start', (data) => {
+      setGameState('countdown');
+      setRoundInfo({ round: data.round, total: data.totalRounds });
+    });
+
+    newSocket.on('countdown_tick', (data) => {
+      setCountdown(data.count);
+    });
+
     newSocket.on('new_round', (data) => {
       setGameState('playing');
       setCurrentQuestion(data.question);
@@ -57,8 +67,11 @@ function App() {
       setRoundResults(null);
     });
 
-    newSocket.on('answer_submitted', () => {
-      setHasAnswered(true);
+    newSocket.on('answer_submitted', (data) => {
+      if (data.finalAnswer) {
+        setHasAnswered(true);
+      }
+      // Feedback will be shown in Game component via props
     });
 
     newSocket.on('round_ended', (data) => {
@@ -75,6 +88,10 @@ function App() {
 
     newSocket.on('answer_count', (data) => {
       setAnswerCount(data);
+    });
+
+    newSocket.on('player_states', (data) => {
+      setPlayers(data.players);
     });
 
     newSocket.on('admin_left', (data) => {
@@ -164,7 +181,7 @@ function App() {
     socket.emit('next_round', {});
   };
 
-  const submitAnswer = (answer) => {
+  const handleSubmitAnswer = (answer) => {
     if (!hasAnswered) {
       socket.emit('submit_answer', { answer });
     }
@@ -193,16 +210,18 @@ function App() {
         />
       )}
       
-      {gameState === 'playing' && (
-        <Game 
+      {(gameState === 'playing' || gameState === 'countdown') && (
+        <Game
           question={currentQuestion}
           roundInfo={roundInfo}
           timeLeft={timeLeft}
           hasAnswered={hasAnswered}
-          onSubmitAnswer={submitAnswer}
+          onSubmitAnswer={handleSubmitAnswer}
           isAdmin={user?.role === 'admin'}
           answerCount={answerCount}
           players={players}
+          countdown={countdown}
+          isCountdown={gameState === 'countdown'}
         />
       )}
       

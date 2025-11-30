@@ -2,7 +2,7 @@
 
 /* Main container - Full viewport with dark dotted gradient background */
 .nickname-container {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,17 +14,18 @@
     repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, transparent 1px, transparent 2px, rgba(255,255,255,0.02) 3px),
     linear-gradient(135deg, #0a0818 0%, #1a1635 50%, #131129 100%);
   background-size: 100%, 100%, 100%, 3px 3px, 3px 3px, 100%;
-  padding: 20px;
+  padding: 2vh 2vw;
+  overflow: hidden;
 }
 
 /* Nickname form box - Semi-transparent container with animation */
 .nickname-box {
   background: rgba(20, 20, 35, 0.95);
   border: 2px solid rgba(88, 166, 255, 0.3);
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  max-width: 450px;
+  padding: 3vh 3vw;
+  border-radius: 1vh;
+  box-shadow: 0 2vh 6vh rgba(0, 0, 0, 0.5), inset 0 0.1vh 0 rgba(255, 255, 255, 0.1);
+  max-width: 30vw;
   width: 100%;
   text-align: center;
   animation: slideIn 0.5s ease-out;
@@ -45,35 +46,35 @@
 
 /* Main title - Large glowing uppercase heading */
 .nickname-box h1 {
-  margin: 0 0 10px 0;
+  margin: 0 0 1vh 0;
   color: #ffffff;
-  font-size: 2.5rem;
+  font-size: 2vw;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+  letter-spacing: 0.2vw;
+  text-shadow: 0 0 2vh rgba(88, 166, 255, 0.5);
   font-family: 'Courier New', monospace;
 }
 
 /* Subtitle - Secondary heading with instructions */
 .nickname-box h2 {
-  margin: 0 0 30px 0;
+  margin: 0 0 2vh 0;
   color: #8b949e;
-  font-size: 1.2rem;
+  font-size: 1vw;
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: 0.05vw;
 }
 
 /* Info box - Blue highlighted informational section */
 .nickname-info {
   background: rgba(88, 166, 255, 0.1);
-  border-left: 4px solid #58a6ff;
-  padding: 15px;
-  margin-bottom: 25px;
-  border-radius: 8px;
+  border-left: 0.4vw solid #58a6ff;
+  padding: 1vh 1vw;
+  margin-bottom: 2vh;
+  border-radius: 0.5vh;
   color: #8b949e;
   text-align: left;
-  font-size: 0.95rem;
+  font-size: 0.85vw;
 }
 
 /* Form container - Wrapper for nickname input and button */
