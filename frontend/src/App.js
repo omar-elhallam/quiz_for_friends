@@ -6,7 +6,7 @@ import Lobby from './components/Lobby';
 import Game from './components/Game';
 import Results from './components/Results';
 
-const SERVER_URL = 'http://localhost:3001';
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'https://weekly-jessica-4t0m-ffbd776b.koyeb.app';
 
 function App() {
   const [socket, setSocket] = useState(null);
