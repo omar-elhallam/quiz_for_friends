@@ -335,6 +335,14 @@ class GameSession {
         // Faster answers get more points
         const timePenalty = Math.floor((timeElapsed / timeLimit) * 500);
         points = Math.max(500, 1000 - timePenalty);
+        
+        // For open-ended questions, deduct 100 points per wrong attempt
+        if (question.questionType !== 'qcm') {
+          const wrongAttempts = (answerData.attempts || []).length - 1; // -1 because last attempt is correct
+          const attemptPenalty = wrongAttempts * 100;
+          points = Math.max(100, points - attemptPenalty); // Minimum 100 points
+        }
+        
         player.score += points;
       }
 
