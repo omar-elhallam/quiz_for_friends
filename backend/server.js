@@ -2,6 +2,8 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
+const path = require('path');
+const fs = require('fs');
 const GameManager = require('./src/GameManager');
 const { authenticateUser } = require('./src/users');
 
@@ -67,10 +69,43 @@ io.on('connection', (socket) => {
     gameManager.nextRound(socket, data);
   });
 
+  socket.on('play_again', (data) => {
+    gameManager.playAgain(socket, data);
+  });
+
   socket.on('disconnect', () => {
     gameManager.handleDisconnect(socket);
     console.log(`Client disconnected: ${socket.id}`);
   });
+});
+
+// Secure media endpoint - serves game media with opaque token
+app.get('/media/:token', (req, res) => {
+  const { token } = req.params;
+  
+  // Get file path from token
+  const filePath = gameManager.getMediaPath(token);
+  
+  if (!filePath) {
+    return res.status(403).json({ error: 'Invalid or expired token' });
+  }
+  
+  // Construct full file path
+  const frontendPath = path.join(__dirname, '..', 'frontend', 'public', filePath);
+  
+  // Check if file exists
+  if (!fs.existsSync(frontendPath)) {
+    return res.status(404).json({ error: 'Media not found' });
+  }
+  
+  // Set appropriate headers to prevent caching and downloading
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  
+  // Serve the file
+  res.sendFile(frontendPath);
 });
 
 // Health check endpoint

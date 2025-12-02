@@ -12,14 +12,14 @@ const users = {
   // Player accounts - can only join and play
   // Add your friends' accounts here
   players: {
-    Reda: { username: 'Reda', password: 'abarro8', role: 'player' },
-    Abdel: { username: 'Abdel', password: 'pass2', role: 'player' },
-    Hamza: { username: 'Hamza', password: 'caramel1', role: 'player' },
-    Bichr: { username: 'Bichr', password: 'demandephotomeuf', role: 'player' },
-    Imrane: { username: 'Imrane', password: 'pedophile', role: 'player' },
-    Rayan: { username: 'Rayan', password: 'pass6', role: 'player' },
-    player7: { username: 'ping', password: 'pong', role: 'player' },
-    player8: { username: 'player8', password: 'pass8', role: 'player' }
+    Player1: { username: 'Player1', password: 'abarro8', role: 'player' },
+    Player2: { username: 'Player2', password: 'boomboom', role: 'player' },
+    Player3: { username: 'Player3', password: 'caramel1', role: 'player' },
+    Player4: { username: 'Player4', password: 'demandephotomeuf', role: 'player' },
+    Player5: { username: 'Player5', password: 'pedophile', role: 'player' },
+    Player6: { username: 'Player6', password: 'pa6', role: 'player' },
+    Player7: { username: 'Player7', password: 'pong', role: 'player' },
+    Player8: { username: 'Player8', password: 'pass8', role: 'player' }
   }
 };
 

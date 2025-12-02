@@ -1,19 +1,21 @@
-const questions = require('./questions');
+const questionGenerator = require('./questionGenerator');
 
 class GameSession {
-  constructor(roomId, io) {
+  constructor(roomId, io, gameManager) {
     this.roomId = roomId;
     this.io = io;
+    this.gameManager = gameManager;
     this.players = new Map(); // username -> player object
     this.adminSocketId = null;
     this.adminName = null;
     this.gameState = 'waiting'; // waiting, playing, round_results, finished
     this.currentRound = 0;
-    this.questions = questions; // Use questions in original order
+    this.questions = []; // Will be generated dynamically when game starts
     this.roundStartTime = null;
     this.roundTimer = null;
     this.answers = new Map(); // username -> {answer, timestamp, attempts: []}
     this.roundLives = new Map(); // username -> lives remaining (for current round)
+    this.usedQuestions = []; // Track used question combinations across multiple games
   }
 
   setAdmin(socketId, username) {
@@ -122,6 +124,24 @@ class GameSession {
     this.gameState = 'playing';
     this.currentRound = 0;
     
+    // Generate 40 questions dynamically: 20 images + 20 audio
+    // Pass the exclude list to avoid repeating questions from previous games
+    this.questions = questionGenerator.generateGameSet(20, 20, this.usedQuestions);
+    
+    // Track these questions as used
+    for (const question of this.questions) {
+      const combination = `${question.gameName}:${question.type}:${question.difficulty}`;
+      if (!this.usedQuestions.includes(combination)) {
+        this.usedQuestions.push(combination);
+      }
+    }
+    
+    console.log(`Generated ${this.questions.length} questions for room ${this.roomId}`);
+    console.log(`Total used combinations: ${this.usedQuestions.length}`);
+    
+    // Write questions to file for debugging
+    this.writeQuestionsToFile();
+    
     // Reset all player scores
     for (const player of this.players.values()) {
       player.score = 0;
@@ -133,6 +153,34 @@ class GameSession {
 
     // Start first round after a short delay
     setTimeout(() => this.startRound(), 2000);
+  }
+
+  writeQuestionsToFile() {
+    const fs = require('fs');
+    const path = require('path');
+    
+    const gameLog = {
+      roomId: this.roomId,
+      timestamp: new Date().toISOString(),
+      totalRounds: this.questions.length,
+      rounds: this.questions.map((q, index) => ({
+        round: index + 1,
+        type: q.type,
+        game: q.gameName,
+        difficulty: q.difficulty,
+        content: q.content,
+        answer: q.correctAnswer
+      }))
+    };
+    
+    const filePath = path.join(__dirname, '..', 'game-questions.json');
+    
+    try {
+      fs.writeFileSync(filePath, JSON.stringify(gameLog, null, 2));
+      console.log(`Game questions written to ${filePath}`);
+    } catch (error) {
+      console.error('Error writing game questions file:', error);
+    }
   }
 
   startRound() {
@@ -170,14 +218,24 @@ class GameSession {
         
         // Send question to all players (without the correct answer)
         const roundDuration = this.getRoundDuration();
+        
+        // Generate secure token for media access
+        let secureContent = question.content;
+        if (question.type === 'image' || question.type === 'audio') {
+          // Generate opaque token that hides the actual file path
+          const token = this.gameManager.generateMediaToken(question.content);
+          secureContent = `/media/${token}`;
+        }
+        
         this.io.to(this.roomId).emit('new_round', {
           round: this.currentRound + 1,
           totalRounds: this.questions.length,
           question: {
             type: question.type,
             questionType: question.questionType,
-            content: question.content,
-            options: question.options || null
+            content: secureContent,
+            options: question.options || null,
+            difficulty: question.difficulty
           },
           duration: roundDuration
         });
@@ -311,7 +369,8 @@ class GameSession {
     this.io.to(this.roomId).emit('round_ended', {
       correctAnswer: question.correctAnswer,
       results: results,
-      leaderboard: this.getLeaderboard()
+      leaderboard: this.getLeaderboard(),
+      question: question
     });
 
     // Admin will manually advance to next round
@@ -331,10 +390,27 @@ class GameSession {
       
       let points = 0;
       if (isCorrect) {
-        // Award points: 1000 base points, minus points for time taken
-        // Faster answers get more points
-        const timePenalty = Math.floor((timeElapsed / timeLimit) * 500);
-        points = Math.max(500, 1000 - timePenalty);
+        // Point ranges based on difficulty
+        let minPoints, maxPoints;
+        if (question.difficulty === 1) {
+          // Easy: 300-1000 points
+          minPoints = 300;
+          maxPoints = 1000;
+        } else if (question.difficulty === 3) {
+          // Hard: 700-1500 points
+          minPoints = 700;
+          maxPoints = 1500;
+        } else {
+          // Medium (2) or default: 500-1200 points
+          minPoints = 500;
+          maxPoints = 1200;
+        }
+        
+        // Award points based on time taken (faster = more points)
+        const timeRatio = timeElapsed / timeLimit;
+        const pointRange = maxPoints - minPoints;
+        points = Math.floor(maxPoints - (timeRatio * pointRange));
+        points = Math.max(minPoints, points); // Ensure minimum points
         
         // For open-ended questions, deduct 100 points per wrong attempt
         if (question.questionType !== 'qcm') {
@@ -439,12 +515,15 @@ class GameSession {
 
   getRoundDuration() {
     const question = this.getCurrentQuestion();
+    
+    // Fixed duration based on question type only
     if (question.type === 'audio') {
       return 60000; // 60 seconds for audio questions
     } else if (question.type === 'image') {
       return 30000; // 30 seconds for image questions
+    } else {
+      return 20000; // 20 seconds for text and review questions
     }
-    return 20000; // 20 seconds for text and review questions
   }
 
   broadcastPlayerStates() {
@@ -477,6 +556,29 @@ class GameSession {
       leaderboard: finalLeaderboard,
       winner: finalLeaderboard[0]
     });
+  }
+
+  // Reset game for a new round, keeping players and used questions tracking
+  resetForNewGame() {
+    this.gameState = 'waiting';
+    this.currentRound = 0;
+    this.questions = [];
+    this.roundStartTime = null;
+    this.answers.clear();
+    this.roundLives.clear();
+    
+    // Clear any active timers
+    if (this.roundTimer) {
+      clearTimeout(this.roundTimer);
+      this.roundTimer = null;
+    }
+    
+    // Reset player scores but keep players in the room
+    for (const player of this.players.values()) {
+      player.score = 0;
+    }
+    
+    console.log(`Game reset for room ${this.roomId}. Used questions: ${this.usedQuestions.length}`);
   }
 
   shuffleQuestions(questions) {

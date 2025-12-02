@@ -24,6 +24,7 @@ function App() {
   const [winner, setWinner] = useState(null);
   const [answerCount, setAnswerCount] = useState({ answered: 0, total: 0 });
   const [countdown, setCountdown] = useState(null);
+  const [wrongAnswerFeedback, setWrongAnswerFeedback] = useState(false);
 
   useEffect(() => {
     const newSocket = io(SERVER_URL);
@@ -65,13 +66,18 @@ function App() {
       setTimeLeft(Math.floor(data.duration / 1000));
       setHasAnswered(false);
       setRoundResults(null);
+      setWrongAnswerFeedback(false);
     });
 
     newSocket.on('answer_submitted', (data) => {
       if (data.finalAnswer) {
         setHasAnswered(true);
       }
-      // Feedback will be shown in Game component via props
+      // Show wrong answer feedback
+      if (!data.correct && !data.finalAnswer) {
+        setWrongAnswerFeedback(true);
+        setTimeout(() => setWrongAnswerFeedback(false), 600);
+      }
     });
 
     newSocket.on('round_ended', (data) => {
@@ -84,6 +90,14 @@ function App() {
       setGameState('finished');
       setLeaderboard(data.leaderboard);
       setWinner(data.winner);
+    });
+
+    newSocket.on('new_game_starting', (data) => {
+      setGameState('lobby');
+      setPlayers(data.players);
+      setRoundResults(null);
+      setWinner(null);
+      setCurrentQuestion(null);
     });
 
     newSocket.on('answer_count', (data) => {
@@ -181,6 +195,10 @@ function App() {
     socket.emit('next_round', {});
   };
 
+  const playAgain = () => {
+    socket.emit('play_again', {});
+  };
+
   const handleSubmitAnswer = (answer) => {
     if (!hasAnswered) {
       socket.emit('submit_answer', { answer });
@@ -222,6 +240,7 @@ function App() {
           players={players}
           countdown={countdown}
           isCountdown={gameState === 'countdown'}
+          wrongAnswerFeedback={wrongAnswerFeedback}
         />
       )}
       
@@ -243,6 +262,7 @@ function App() {
           winner={winner}
           isGameFinished={true}
           isAdmin={user?.role === 'admin'}
+          onPlayAgain={playAgain}
         />
       )}
     </div>

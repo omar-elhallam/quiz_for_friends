@@ -1,0 +1,327 @@
+{
+  "roomId": "MAIN",
+  "timestamp": "2025-12-02T21:55:37.357Z",
+  "totalRounds": 40,
+  "rounds": [
+    {
+      "round": 1,
+      "type": "image",
+      "game": "dofus",
+      "difficulty": 3,
+      "content": "games/dofus/images/3.png",
+      "answer": "Dofus"
+    },
+    {
+      "round": 2,
+      "type": "image",
+      "game": "hearthstone",
+      "difficulty": 1,
+      "content": "games/hearthstone/images/1.png",
+      "answer": "Hearthstone"
+    },
+    {
+      "round": 3,
+      "type": "image",
+      "game": "godofwar4",
+      "difficulty": 3,
+      "content": "games/godofwar4/images/3.png",
+      "answer": "God of War 4"
+    },
+    {
+      "round": 4,
+      "type": "image",
+      "game": "darksouls2",
+      "difficulty": 3,
+      "content": "games/darksouls2/images/3.png",
+      "answer": "Dark Souls 2"
+    },
+    {
+      "round": 5,
+      "type": "image",
+      "game": "seaofthieves",
+      "difficulty": 1,
+      "content": "games/seaofthieves/images/1.png",
+      "answer": "Sea of Thieves"
+    },
+    {
+      "round": 6,
+      "type": "image",
+      "game": "saintsrow4",
+      "difficulty": 3,
+      "content": "games/saintsrow4/images/3.png",
+      "answer": "Saints Row IV"
+    },
+    {
+      "round": 7,
+      "type": "image",
+      "game": "clairobscur",
+      "difficulty": 1,
+      "content": "games/clairobscur/images/1.png",
+      "answer": "Clair Obscur: Expedition 33"
+    },
+    {
+      "round": 8,
+      "type": "image",
+      "game": "clairobscur",
+      "difficulty": 1,
+      "content": "games/clairobscur/images/1.png",
+      "answer": "Clair Obscur: Expedition 33"
+    },
+    {
+      "round": 9,
+      "type": "image",
+      "game": "bioshockinfinite",
+      "difficulty": 3,
+      "content": "games/bioshockinfinite/images/3.png",
+      "answer": "Bioshock Infinite"
+    },
+    {
+      "round": 10,
+      "type": "image",
+      "game": "mario64",
+      "difficulty": 3,
+      "content": "games/mario64/images/3.png",
+      "answer": "Super Mario 64"
+    },
+    {
+      "round": 11,
+      "type": "image",
+      "game": "halo2",
+      "difficulty": 1,
+      "content": "games/halo2/images/1.png",
+      "answer": "Halo 2"
+    },
+    {
+      "round": 12,
+      "type": "image",
+      "game": "darksouls3",
+      "difficulty": 1,
+      "content": "games/darksouls3/images/1.png",
+      "answer": "Dark Souls 3"
+    },
+    {
+      "round": 13,
+      "type": "image",
+      "game": "subnautica",
+      "difficulty": 1,
+      "content": "games/subnautica/images/1.png",
+      "answer": "Subnautica"
+    },
+    {
+      "round": 14,
+      "type": "image",
+      "game": "bioshock2",
+      "difficulty": 1,
+      "content": "games/bioshock2/images/1.png",
+      "answer": "Bioshock 2"
+    },
+    {
+      "round": 15,
+      "type": "image",
+      "game": "kingdomhearts",
+      "difficulty": 1,
+      "content": "games/kingdomhearts/images/1.png",
+      "answer": "Kingdom Hearts"
+    },
+    {
+      "round": 16,
+      "type": "image",
+      "game": "clairobscur",
+      "difficulty": 2,
+      "content": "games/clairobscur/images/2.png",
+      "answer": "Clair Obscur: Expedition 33"
+    },
+    {
+      "round": 17,
+      "type": "image",
+      "game": "supermariogalaxy",
+      "difficulty": 1,
+      "content": "games/supermariogalaxy/images/1.png",
+      "answer": "Super Mario Galaxy"
+    },
+    {
+      "round": 18,
+      "type": "image",
+      "game": "doom",
+      "difficulty": 1,
+      "content": "games/doom/images/1.png",
+      "answer": "DOOM"
+    },
+    {
+      "round": 19,
+      "type": "image",
+      "game": "skyrim",
+      "difficulty": 2,
+      "content": "games/skyrim/images/2.png",
+      "answer": "The Elder Scrolls V: Skyrim"
+    },
+    {
+      "round": 20,
+      "type": "image",
+      "game": "finalfantasy",
+      "difficulty": 3,
+      "content": "games/finalfantasy/images/3.png",
+      "answer": "Final Fantasy"
+    },
+    {
+      "round": 21,
+      "type": "audio",
+      "game": "zelamajorasmask",
+      "difficulty": 2,
+      "content": "games/zelamajorasmask/audio/2.mp3",
+      "answer": "The Legend of Zelda: Majora's Mask"
+    },
+    {
+      "round": 22,
+      "type": "audio",
+      "game": "doom",
+      "difficulty": 1,
+      "content": "games/doom/audio/1.mp3",
+      "answer": "DOOM"
+    },
+    {
+      "round": 23,
+      "type": "audio",
+      "game": "fearandhunger",
+      "difficulty": 1,
+      "content": "games/fearandhunger/audio/1.mp3",
+      "answer": "Fear & Hunger 2: Termina"
+    },
+    {
+      "round": 24,
+      "type": "audio",
+      "game": "badpiggies",
+      "difficulty": 1,
+      "content": "games/badpiggies/audio/1.mp3",
+      "answer": "Bad Piggies"
+    },
+    {
+      "round": 25,
+      "type": "audio",
+      "game": "smashbrosultimate",
+      "difficulty": 3,
+      "content": "games/smashbrosultimate/audio/3.mp3",
+      "answer": "Super Smash Bros. Ultimate"
+    },
+    {
+      "round": 26,
+      "type": "audio",
+      "game": "goatsimulator",
+      "difficulty": 1,
+      "content": "games/goatsimulator/audio/1.mp3",
+      "answer": "Goat Simulator"
+    },
+    {
+      "round": 27,
+      "type": "audio",
+      "game": "badpiggies",
+      "difficulty": 1,
+      "content": "games/badpiggies/audio/1.mp3",
+      "answer": "Bad Piggies"
+    },
+    {
+      "round": 28,
+      "type": "audio",
+      "game": "wiiparty",
+      "difficulty": 1,
+      "content": "games/wiiparty/audio/1.mp3",
+      "answer": "Wii Party"
+    },
+    {
+      "round": 29,
+      "type": "audio",
+      "game": "mortalkombat",
+      "difficulty": 1,
+      "content": "games/mortalkombat/audio/1.mp3",
+      "answer": "Mortal Kombat"
+    },
+    {
+      "round": 30,
+      "type": "audio",
+      "game": "ddlc",
+      "difficulty": 2,
+      "content": "games/ddlc/audio/2.mp3",
+      "answer": "Doki Doki Literature Club"
+    },
+    {
+      "round": 31,
+      "type": "audio",
+      "game": "clairobscur",
+      "difficulty": 2,
+      "content": "games/clairobscur/audio/2.mp3",
+      "answer": "Clair Obscur: Expedition 33"
+    },
+    {
+      "round": 32,
+      "type": "audio",
+      "game": "badpiggies",
+      "difficulty": 1,
+      "content": "games/badpiggies/audio/1.mp3",
+      "answer": "Bad Piggies"
+    },
+    {
+      "round": 33,
+      "type": "audio",
+      "game": "wiisports",
+      "difficulty": 2,
+      "content": "games/wiisports/audio/2.mp3",
+      "answer": "Wii Sports"
+    },
+    {
+      "round": 34,
+      "type": "audio",
+      "game": "csgo",
+      "difficulty": 1,
+      "content": "games/csgo/audio/1.mp3",
+      "answer": "Counter-Strike: Global Offensive"
+    },
+    {
+      "round": 35,
+      "type": "audio",
+      "game": "goatsimulator",
+      "difficulty": 1,
+      "content": "games/goatsimulator/audio/1.mp3",
+      "answer": "Goat Simulator"
+    },
+    {
+      "round": 36,
+      "type": "audio",
+      "game": "geometrydash",
+      "difficulty": 1,
+      "content": "games/geometrydash/audio/1.mp3",
+      "answer": "Geometry Dash"
+    },
+    {
+      "round": 37,
+      "type": "audio",
+      "game": "badpiggies",
+      "difficulty": 1,
+      "content": "games/badpiggies/audio/1.mp3",
+      "answer": "Bad Piggies"
+    },
+    {
+      "round": 38,
+      "type": "audio",
+      "game": "bindingofisaac",
+      "difficulty": 2,
+      "content": "games/bindingofisaac/audio/2.mp3",
+      "answer": "The Binding of Isaac"
+    },
+    {
+      "round": 39,
+      "type": "audio",
+      "game": "leagueoflegends",
+      "difficulty": 2,
+      "content": "games/leagueoflegends/audio/2.mp3",
+      "answer": "League of Legends"
+    },
+    {
+      "round": 40,
+      "type": "audio",
+      "game": "pokemonplatine",
+      "difficulty": 1,
+      "content": "games/pokemonplatine/audio/1.mp3",
+      "answer": "Pokémon Platinum"
+    }
+  ]
+}

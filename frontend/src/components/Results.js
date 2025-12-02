@@ -1,7 +1,9 @@
 import React from 'react';
 import '../styles/Results.css';
 
-function Results({ roundResults, leaderboard, winner, isGameFinished, isAdmin, onNextRound, question }) {
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'https://weekly-jessica-4t0m-ffbd776b.koyeb.app';
+
+function Results({ roundResults, leaderboard, winner, isGameFinished, isAdmin, onNextRound, onPlayAgain, question }) {
   return (
     <div className="results-container">
       {isGameFinished ? (
@@ -16,7 +18,14 @@ function Results({ roundResults, leaderboard, winner, isGameFinished, isAdmin, o
         <div className="results-header">
           <h1 className="results-title">📊 Round Results</h1>
           {roundResults && (
-            <h2 className="results-correct-answer">Correct Answer: {roundResults.correctAnswer}</h2>
+            <h2 className="results-correct-answer">
+              Correct Answer: {roundResults.correctAnswer}
+              {question && question.difficulty && (
+                <span className="results-difficulty-inline">
+                  {' | '}{question.difficulty === 1 ? '⭐ Easy' : question.difficulty === 2 ? '⭐⭐ Medium' : '⭐⭐⭐ Hard'}
+                </span>
+              )}
+            </h2>
           )}
         </div>
       )}
@@ -86,12 +95,12 @@ function Results({ roundResults, leaderboard, winner, isGameFinished, isAdmin, o
             <h3>Question</h3>
             <div className="results-question-display">
               {question.type === 'image' && (
-                <img src={`/images/${question.content}`} alt="Question" className="results-question-image" />
+                <img src={question.content.startsWith('/media') ? `${SERVER_URL}${question.content}` : `/${question.content}`} alt="Question" className="results-question-image" />
               )}
               {question.type === 'audio' && (
                 <div className="results-audio-display">
                   <p>🎵 Audio Question</p>
-                  <audio controls src={`/audio/${question.content}`} className="results-audio-player">
+                  <audio controls src={question.content.startsWith('/media') ? `${SERVER_URL}${question.content}` : `/${question.content}`} className="results-audio-player">
                     Your browser does not support the audio element.
                   </audio>
                 </div>
@@ -137,6 +146,14 @@ function Results({ roundResults, leaderboard, winner, isGameFinished, isAdmin, o
               Waiting for admin to start next round...
             </div>
           )}
+        </div>
+      )}
+      
+      {isGameFinished && isAdmin && (
+        <div className="results-footer">
+          <button onClick={onPlayAgain} className="results-play-again-btn">
+            🎮 Play Again
+          </button>
         </div>
       )}
     </div>

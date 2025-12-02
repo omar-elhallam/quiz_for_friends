@@ -1,0 +1,368 @@
+{
+  "gameNumber": 2,
+  "timestamp": "2025-12-02T22:19:42.883Z",
+  "totalRounds": 40,
+  "usedCombinationsCount": 80,
+  "rounds": [
+    {
+      "round": 1,
+      "type": "image",
+      "game": "bioshockinfinite",
+      "difficulty": 3,
+      "content": "games/bioshockinfinite/images/3.png",
+      "answer": "Bioshock Infinite",
+      "combination": "bioshockinfinite:image:3"
+    },
+    {
+      "round": 2,
+      "type": "image",
+      "game": "streetfighter",
+      "difficulty": 1,
+      "content": "games/streetfighter/images/1.png",
+      "answer": "Street Fighter",
+      "combination": "streetfighter:image:1"
+    },
+    {
+      "round": 3,
+      "type": "image",
+      "game": "ark",
+      "difficulty": 3,
+      "content": "games/ark/images/3.png",
+      "answer": "ARK: Survival Evolved",
+      "combination": "ark:image:3"
+    },
+    {
+      "round": 4,
+      "type": "image",
+      "game": "baldursgate3",
+      "difficulty": 1,
+      "content": "games/baldursgate3/images/1.png",
+      "answer": "Baldur's Gate 3",
+      "combination": "baldursgate3:image:1"
+    },
+    {
+      "round": 5,
+      "type": "image",
+      "game": "assassinscreedodyssee",
+      "difficulty": 1,
+      "content": "games/assassinscreedodyssee/images/1.png",
+      "answer": "Assassin's Creed Odyssey",
+      "combination": "assassinscreedodyssee:image:1"
+    },
+    {
+      "round": 6,
+      "type": "image",
+      "game": "pokemonplatine",
+      "difficulty": 2,
+      "content": "games/pokemonplatine/images/2.png",
+      "answer": "Pokémon Platinum",
+      "combination": "pokemonplatine:image:2"
+    },
+    {
+      "round": 7,
+      "type": "image",
+      "game": "fortnite",
+      "difficulty": 1,
+      "content": "games/fortnite/images/1.png",
+      "answer": "Fortnite",
+      "combination": "fortnite:image:1"
+    },
+    {
+      "round": 8,
+      "type": "image",
+      "game": "saintsrow4",
+      "difficulty": 2,
+      "content": "games/saintsrow4/images/2.png",
+      "answer": "Saints Row IV",
+      "combination": "saintsrow4:image:2"
+    },
+    {
+      "round": 9,
+      "type": "image",
+      "game": "liesofp",
+      "difficulty": 3,
+      "content": "games/liesofp/images/3.png",
+      "answer": "Lies of P",
+      "combination": "liesofp:image:3"
+    },
+    {
+      "round": 10,
+      "type": "image",
+      "game": "dragonballxenoverse2",
+      "difficulty": 3,
+      "content": "games/dragonballxenoverse2/images/3.png",
+      "answer": "Dragon Ball Xenoverse 2",
+      "combination": "dragonballxenoverse2:image:3"
+    },
+    {
+      "round": 11,
+      "type": "image",
+      "game": "halo2",
+      "difficulty": 2,
+      "content": "games/halo2/images/2.png",
+      "answer": "Halo 2",
+      "combination": "halo2:image:2"
+    },
+    {
+      "round": 12,
+      "type": "image",
+      "game": "palworld",
+      "difficulty": 1,
+      "content": "games/palworld/images/1.png",
+      "answer": "Palworld",
+      "combination": "palworld:image:1"
+    },
+    {
+      "round": 13,
+      "type": "image",
+      "game": "saintsrow4",
+      "difficulty": 1,
+      "content": "games/saintsrow4/images/1.png",
+      "answer": "Saints Row IV",
+      "combination": "saintsrow4:image:1"
+    },
+    {
+      "round": 14,
+      "type": "image",
+      "game": "rainbowsixsiege",
+      "difficulty": 2,
+      "content": "games/rainbowsixsiege/images/2.png",
+      "answer": "Rainbow Six Siege",
+      "combination": "rainbowsixsiege:image:2"
+    },
+    {
+      "round": 15,
+      "type": "image",
+      "game": "fearandhunger",
+      "difficulty": 2,
+      "content": "games/fearandhunger/images/2.png",
+      "answer": "Fear & Hunger 2: Termina",
+      "combination": "fearandhunger:image:2"
+    },
+    {
+      "round": 16,
+      "type": "image",
+      "game": "smashbrosultimate",
+      "difficulty": 3,
+      "content": "games/smashbrosultimate/images/3.png",
+      "answer": "Super Smash Bros. Ultimate",
+      "combination": "smashbrosultimate:image:3"
+    },
+    {
+      "round": 17,
+      "type": "image",
+      "game": "eldenringnightreign",
+      "difficulty": 1,
+      "content": "games/eldenringnightreign/images/1.png",
+      "answer": "Elden Ring: Nightreign",
+      "combination": "eldenringnightreign:image:1"
+    },
+    {
+      "round": 18,
+      "type": "image",
+      "game": "bindingofisaac",
+      "difficulty": 1,
+      "content": "games/bindingofisaac/images/1.png",
+      "answer": "The Binding of Isaac",
+      "combination": "bindingofisaac:image:1"
+    },
+    {
+      "round": 19,
+      "type": "image",
+      "game": "clairobscur",
+      "difficulty": 2,
+      "content": "games/clairobscur/images/2.png",
+      "answer": "Clair Obscur: Expedition 33",
+      "combination": "clairobscur:image:2"
+    },
+    {
+      "round": 20,
+      "type": "image",
+      "game": "saintsrow4",
+      "difficulty": 3,
+      "content": "games/saintsrow4/images/3.png",
+      "answer": "Saints Row IV",
+      "combination": "saintsrow4:image:3"
+    },
+    {
+      "round": 21,
+      "type": "audio",
+      "game": "bioshockinfinite",
+      "difficulty": 2,
+      "content": "games/bioshockinfinite/audio/2.mp3",
+      "answer": "Bioshock Infinite",
+      "combination": "bioshockinfinite:audio:2"
+    },
+    {
+      "round": 22,
+      "type": "audio",
+      "game": "ddlc",
+      "difficulty": 1,
+      "content": "games/ddlc/audio/1.mp3",
+      "answer": "Doki Doki Literature Club",
+      "combination": "ddlc:audio:1"
+    },
+    {
+      "round": 23,
+      "type": "audio",
+      "game": "celeste",
+      "difficulty": 2,
+      "content": "games/celeste/audio/2.mp3",
+      "answer": "Celeste",
+      "combination": "celeste:audio:2"
+    },
+    {
+      "round": 24,
+      "type": "audio",
+      "game": "dofus",
+      "difficulty": 1,
+      "content": "games/dofus/audio/1.mp3",
+      "answer": "Dofus",
+      "combination": "dofus:audio:1"
+    },
+    {
+      "round": 25,
+      "type": "audio",
+      "game": "lastofus2",
+      "difficulty": 1,
+      "content": "games/lastofus2/audio/1.mp3",
+      "answer": "The Last of Us Part II",
+      "combination": "lastofus2:audio:1"
+    },
+    {
+      "round": 26,
+      "type": "audio",
+      "game": "thewitcher3",
+      "difficulty": 1,
+      "content": "games/thewitcher3/audio/1.mp3",
+      "answer": "The Witcher 3",
+      "combination": "thewitcher3:audio:1"
+    },
+    {
+      "round": 27,
+      "type": "audio",
+      "game": "seaofthieves",
+      "difficulty": 1,
+      "content": "games/seaofthieves/audio/1.mp3",
+      "answer": "Sea of Thieves",
+      "combination": "seaofthieves:audio:1"
+    },
+    {
+      "round": 28,
+      "type": "audio",
+      "game": "osu",
+      "difficulty": 1,
+      "content": "games/osu/audio/1.mp3",
+      "answer": "osu!",
+      "combination": "osu:audio:1"
+    },
+    {
+      "round": 29,
+      "type": "audio",
+      "game": "dragonballxenoverse2",
+      "difficulty": 1,
+      "content": "games/dragonballxenoverse2/audio/1.mp3",
+      "answer": "Dragon Ball Xenoverse 2",
+      "combination": "dragonballxenoverse2:audio:1"
+    },
+    {
+      "round": 30,
+      "type": "audio",
+      "game": "bindingofisaac",
+      "difficulty": 2,
+      "content": "games/bindingofisaac/audio/2.mp3",
+      "answer": "The Binding of Isaac",
+      "combination": "bindingofisaac:audio:2"
+    },
+    {
+      "round": 31,
+      "type": "audio",
+      "game": "doom",
+      "difficulty": 1,
+      "content": "games/doom/audio/1.mp3",
+      "answer": "DOOM",
+      "combination": "doom:audio:1"
+    },
+    {
+      "round": 32,
+      "type": "audio",
+      "game": "wiiparty",
+      "difficulty": 1,
+      "content": "games/wiiparty/audio/1.mp3",
+      "answer": "Wii Party",
+      "combination": "wiiparty:audio:1"
+    },
+    {
+      "round": 33,
+      "type": "audio",
+      "game": "palworld",
+      "difficulty": 3,
+      "content": "games/palworld/audio/3.mp3",
+      "answer": "Palworld",
+      "combination": "palworld:audio:3"
+    },
+    {
+      "round": 34,
+      "type": "audio",
+      "game": "dispatch",
+      "difficulty": 1,
+      "content": "games/dispatch/audio/1.mp3",
+      "answer": "Dispatch",
+      "combination": "dispatch:audio:1"
+    },
+    {
+      "round": 35,
+      "type": "audio",
+      "game": "portal2",
+      "difficulty": 3,
+      "content": "games/portal2/audio/3.mp3",
+      "answer": "Portal 2",
+      "combination": "portal2:audio:3"
+    },
+    {
+      "round": 36,
+      "type": "audio",
+      "game": "darksouls2",
+      "difficulty": 1,
+      "content": "games/darksouls2/audio/1.mp3",
+      "answer": "Dark Souls 2",
+      "combination": "darksouls2:audio:1"
+    },
+    {
+      "round": 37,
+      "type": "audio",
+      "game": "celeste",
+      "difficulty": 1,
+      "content": "games/celeste/audio/1.mp3",
+      "answer": "Celeste",
+      "combination": "celeste:audio:1"
+    },
+    {
+      "round": 38,
+      "type": "audio",
+      "game": "eldenringnightreign",
+      "difficulty": 1,
+      "content": "games/eldenringnightreign/audio/1.mp3",
+      "answer": "Elden Ring: Nightreign",
+      "combination": "eldenringnightreign:audio:1"
+    },
+    {
+      "round": 39,
+      "type": "audio",
+      "game": "fearandhunger",
+      "difficulty": 3,
+      "content": "games/fearandhunger/audio/3.mp3",
+      "answer": "Fear & Hunger 2: Termina",
+      "combination": "fearandhunger:audio:3"
+    },
+    {
+      "round": 40,
+      "type": "audio",
+      "game": "darksouls2",
+      "difficulty": 3,
+      "content": "games/darksouls2/audio/3.mp3",
+      "answer": "Dark Souls 2",
+      "combination": "darksouls2:audio:3"
+    }
+  ]
+}

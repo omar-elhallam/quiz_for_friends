@@ -6,6 +6,7 @@ class GameManager {
     this.rooms = new Map(); // roomId -> GameSession
     this.mainRoom = null; // Single main room
     this.mainRoomId = 'MAIN';
+    this.mediaTokens = new Map(); // token -> { path, expires }
   }
 
   createRoom(socket, data, callback) {
@@ -22,7 +23,7 @@ class GameManager {
     }
     
     // Create main game session
-    const gameSession = new GameSession(this.mainRoomId, this.io);
+    const gameSession = new GameSession(this.mainRoomId, this.io, this);
     this.rooms.set(this.mainRoomId, gameSession);
     this.mainRoom = gameSession;
 
@@ -149,6 +150,40 @@ class GameManager {
     gameSession.adminNextRound();
   }
 
+  playAgain(socket, data) {
+    const gameSession = this.mainRoom;
+
+    if (!gameSession) {
+      return socket.emit('error', { message: 'Room not found' });
+    }
+
+    // Check if user is admin
+    if (gameSession.adminSocketId !== socket.id) {
+      return socket.emit('error', { message: 'Only admin can start a new game' });
+    }
+
+    // Check if game is actually finished
+    if (gameSession.gameState !== 'finished') {
+      return socket.emit('error', { message: 'Current game is not finished yet' });
+    }
+
+    console.log(`Admin starting new game in room ${this.mainRoomId}`);
+    
+    // Reset the game session for a new game
+    gameSession.resetForNewGame();
+    
+    // Notify all players to return to lobby
+    this.io.to(this.mainRoomId).emit('new_game_starting', {
+      players: gameSession.getPlayers(),
+      playerCount: gameSession.getPlayerCount()
+    });
+    
+    // Start the new game after a short delay
+    setTimeout(() => {
+      gameSession.startGame();
+    }, 2000);
+  }
+
   handleDisconnect(socket) {
     const gameSession = this.mainRoom;
     
@@ -197,6 +232,39 @@ class GameManager {
 
   getRoomCount() {
     return this.rooms.size;
+  }
+
+  // Generate a secure token for media access
+  generateMediaToken(mediaPath) {
+    const crypto = require('crypto');
+    const token = crypto.randomBytes(32).toString('hex');
+    const expires = Date.now() + 5 * 60 * 1000; // Token valid for 5 minutes
+    
+    this.mediaTokens.set(token, { path: mediaPath, expires });
+    
+    // Clean up expired tokens periodically
+    setTimeout(() => {
+      this.mediaTokens.delete(token);
+    }, 5 * 60 * 1000);
+    
+    return token;
+  }
+
+  // Get media path from token (validates and returns path)
+  getMediaPath(token) {
+    const tokenData = this.mediaTokens.get(token);
+    
+    if (!tokenData) {
+      return null;
+    }
+    
+    // Check if token expired
+    if (Date.now() > tokenData.expires) {
+      this.mediaTokens.delete(token);
+      return null;
+    }
+    
+    return tokenData.path;
   }
 }
 

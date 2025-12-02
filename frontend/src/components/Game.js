@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Game.css';
 
-function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAdmin, answerCount, players, countdown, isCountdown }) {
+const SERVER_URL = process.env.REACT_APP_SERVER_URL || 'https://weekly-jessica-4t0m-ffbd776b.koyeb.app';
+
+function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAdmin, answerCount, players, countdown, isCountdown, wrongAnswerFeedback }) {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [textAnswer, setTextAnswer] = useState('');
   const [lightboxImage, setLightboxImage] = useState(null);
@@ -102,8 +104,8 @@ function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAd
 
         <div className="game-question-box">
           {question.type === 'image' && (
-            <div className="game-image-wrapper" onClick={() => setLightboxImage({ src: `/images/${question.content}`, alt: 'Game Question' })}>
-              <img src={`/images/${question.content}`} alt="Game" className="game-question-image" />
+            <div className="game-image-wrapper" onClick={() => setLightboxImage({ src: question.content.startsWith('/media') ? `${SERVER_URL}${question.content}` : `/${question.content}`, alt: 'Game Question' })}>
+              <img src={question.content.startsWith('/media') ? `${SERVER_URL}${question.content}` : `/${question.content}`} alt="Game" className="game-question-image" />
               <div className="game-image-zoom-icon">🔍</div>
             </div>
           )}
@@ -111,7 +113,7 @@ function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAd
           {question.type === 'audio' && !isCountdown && (
             <div className="game-question-audio">
               <p>🎵 Listen to the audio:</p>
-              <audio controls autoPlay src={`/audio/${question.content}`} className="game-audio-player">
+              <audio controls autoPlay src={question.content.startsWith('/media') ? `${SERVER_URL}${question.content}` : `/${question.content}`} className="game-audio-player">
                 Your browser does not support the audio element.
               </audio>
             </div>
@@ -160,9 +162,17 @@ function Game({ question, roundInfo, timeLeft, hasAnswered, onSubmitAnswer, isAd
                       maxLength={100}
                       className="game-text-input"
                     />
-                    <button type="submit" className="game-submit-btn">
-                      Submit Answer
-                    </button>
+                    <div className="game-submit-wrapper">
+                      <button 
+                        type="submit" 
+                        className={`game-submit-btn ${wrongAnswerFeedback ? 'wrong-shake' : ''}`}
+                      >
+                        Submit Answer
+                      </button>
+                      {wrongAnswerFeedback && (
+                        <span className="wrong-answer-x">✖</span>
+                      )}
+                    </div>
                   </form>
                 )}
               </>

@@ -1,0 +1,368 @@
+{
+  "gameNumber": 1,
+  "timestamp": "2025-12-02T22:19:42.871Z",
+  "totalRounds": 40,
+  "usedCombinationsCount": 40,
+  "rounds": [
+    {
+      "round": 1,
+      "type": "image",
+      "game": "finalfantasy",
+      "difficulty": 1,
+      "content": "games/finalfantasy/images/1.png",
+      "answer": "Final Fantasy",
+      "combination": "finalfantasy:image:1"
+    },
+    {
+      "round": 2,
+      "type": "image",
+      "game": "supermariogalaxy",
+      "difficulty": 2,
+      "content": "games/supermariogalaxy/images/2.png",
+      "answer": "Super Mario Galaxy",
+      "combination": "supermariogalaxy:image:2"
+    },
+    {
+      "round": 3,
+      "type": "image",
+      "game": "dofus",
+      "difficulty": 2,
+      "content": "games/dofus/images/2.png",
+      "answer": "Dofus",
+      "combination": "dofus:image:2"
+    },
+    {
+      "round": 4,
+      "type": "image",
+      "game": "clairobscur",
+      "difficulty": 3,
+      "content": "games/clairobscur/images/3.png",
+      "answer": "Clair Obscur: Expedition 33",
+      "combination": "clairobscur:image:3"
+    },
+    {
+      "round": 5,
+      "type": "image",
+      "game": "portal2",
+      "difficulty": 1,
+      "content": "games/portal2/images/1.png",
+      "answer": "Portal 2",
+      "combination": "portal2:image:1"
+    },
+    {
+      "round": 6,
+      "type": "image",
+      "game": "fnaf",
+      "difficulty": 2,
+      "content": "games/fnaf/images/2.png",
+      "answer": "Five Nights at Freddy's",
+      "combination": "fnaf:image:2"
+    },
+    {
+      "round": 7,
+      "type": "image",
+      "game": "ddlc",
+      "difficulty": 1,
+      "content": "games/ddlc/images/1.png",
+      "answer": "Doki Doki Literature Club",
+      "combination": "ddlc:image:1"
+    },
+    {
+      "round": 8,
+      "type": "image",
+      "game": "csgo",
+      "difficulty": 2,
+      "content": "games/csgo/images/2.png",
+      "answer": "Counter-Strike: Global Offensive",
+      "combination": "csgo:image:2"
+    },
+    {
+      "round": 9,
+      "type": "image",
+      "game": "bioshockinfinite",
+      "difficulty": 1,
+      "content": "games/bioshockinfinite/images/1.png",
+      "answer": "Bioshock Infinite",
+      "combination": "bioshockinfinite:image:1"
+    },
+    {
+      "round": 10,
+      "type": "image",
+      "game": "bioshockinfinite",
+      "difficulty": 2,
+      "content": "games/bioshockinfinite/images/2.png",
+      "answer": "Bioshock Infinite",
+      "combination": "bioshockinfinite:image:2"
+    },
+    {
+      "round": 11,
+      "type": "image",
+      "game": "clairobscur",
+      "difficulty": 1,
+      "content": "games/clairobscur/images/1.png",
+      "answer": "Clair Obscur: Expedition 33",
+      "combination": "clairobscur:image:1"
+    },
+    {
+      "round": 12,
+      "type": "image",
+      "game": "theforest",
+      "difficulty": 1,
+      "content": "games/theforest/images/1.png",
+      "answer": "The Forest",
+      "combination": "theforest:image:1"
+    },
+    {
+      "round": 13,
+      "type": "image",
+      "game": "dispatch",
+      "difficulty": 1,
+      "content": "games/dispatch/images/1.png",
+      "answer": "Dispatch",
+      "combination": "dispatch:image:1"
+    },
+    {
+      "round": 14,
+      "type": "image",
+      "game": "streetfighter",
+      "difficulty": 2,
+      "content": "games/streetfighter/images/2.png",
+      "answer": "Street Fighter",
+      "combination": "streetfighter:image:2"
+    },
+    {
+      "round": 15,
+      "type": "image",
+      "game": "csgo",
+      "difficulty": 3,
+      "content": "games/csgo/images/3.png",
+      "answer": "Counter-Strike: Global Offensive",
+      "combination": "csgo:image:3"
+    },
+    {
+      "round": 16,
+      "type": "image",
+      "game": "borderlands2",
+      "difficulty": 3,
+      "content": "games/borderlands2/images/3.png",
+      "answer": "Borderlands 2",
+      "combination": "borderlands2:image:3"
+    },
+    {
+      "round": 17,
+      "type": "image",
+      "game": "theforest",
+      "difficulty": 2,
+      "content": "games/theforest/images/2.png",
+      "answer": "The Forest",
+      "combination": "theforest:image:2"
+    },
+    {
+      "round": 18,
+      "type": "image",
+      "game": "skyrim",
+      "difficulty": 1,
+      "content": "games/skyrim/images/1.png",
+      "answer": "The Elder Scrolls V: Skyrim",
+      "combination": "skyrim:image:1"
+    },
+    {
+      "round": 19,
+      "type": "image",
+      "game": "leagueoflegends",
+      "difficulty": 2,
+      "content": "games/leagueoflegends/images/2.png",
+      "answer": "League of Legends",
+      "combination": "leagueoflegends:image:2"
+    },
+    {
+      "round": 20,
+      "type": "image",
+      "game": "hades",
+      "difficulty": 2,
+      "content": "games/hades/images/2.png",
+      "answer": "Hades",
+      "combination": "hades:image:2"
+    },
+    {
+      "round": 21,
+      "type": "audio",
+      "game": "subnautica",
+      "difficulty": 3,
+      "content": "games/subnautica/audio/3.mp3",
+      "answer": "Subnautica",
+      "combination": "subnautica:audio:3"
+    },
+    {
+      "round": 22,
+      "type": "audio",
+      "game": "sonic",
+      "difficulty": 2,
+      "content": "games/sonic/audio/2.mp3",
+      "answer": "Sonic",
+      "combination": "sonic:audio:2"
+    },
+    {
+      "round": 23,
+      "type": "audio",
+      "game": "clairobscur",
+      "difficulty": 3,
+      "content": "games/clairobscur/audio/3.mp3",
+      "answer": "Clair Obscur: Expedition 33",
+      "combination": "clairobscur:audio:3"
+    },
+    {
+      "round": 24,
+      "type": "audio",
+      "game": "okami",
+      "difficulty": 3,
+      "content": "games/okami/audio/3.mp3",
+      "answer": "Okami",
+      "combination": "okami:audio:3"
+    },
+    {
+      "round": 25,
+      "type": "audio",
+      "game": "wiisports",
+      "difficulty": 2,
+      "content": "games/wiisports/audio/2.mp3",
+      "answer": "Wii Sports",
+      "combination": "wiisports:audio:2"
+    },
+    {
+      "round": 26,
+      "type": "audio",
+      "game": "smashbrosultimate",
+      "difficulty": 1,
+      "content": "games/smashbrosultimate/audio/1.mp3",
+      "answer": "Super Smash Bros. Ultimate",
+      "combination": "smashbrosultimate:audio:1"
+    },
+    {
+      "round": 27,
+      "type": "audio",
+      "game": "hearthstone",
+      "difficulty": 3,
+      "content": "games/hearthstone/audio/3.mp3",
+      "answer": "Hearthstone",
+      "combination": "hearthstone:audio:3"
+    },
+    {
+      "round": 28,
+      "type": "audio",
+      "game": "baldursgate3",
+      "difficulty": 2,
+      "content": "games/baldursgate3/audio/2.mp3",
+      "answer": "Baldur's Gate 3",
+      "combination": "baldursgate3:audio:2"
+    },
+    {
+      "round": 29,
+      "type": "audio",
+      "game": "skyrim",
+      "difficulty": 2,
+      "content": "games/skyrim/audio/2.mp3",
+      "answer": "The Elder Scrolls V: Skyrim",
+      "combination": "skyrim:audio:2"
+    },
+    {
+      "round": 30,
+      "type": "audio",
+      "game": "osu",
+      "difficulty": 2,
+      "content": "games/osu/audio/2.mp3",
+      "answer": "osu!",
+      "combination": "osu:audio:2"
+    },
+    {
+      "round": 31,
+      "type": "audio",
+      "game": "balatro",
+      "difficulty": 1,
+      "content": "games/balatro/audio/1.mp3",
+      "answer": "Balatro",
+      "combination": "balatro:audio:1"
+    },
+    {
+      "round": 32,
+      "type": "audio",
+      "game": "dofus",
+      "difficulty": 2,
+      "content": "games/dofus/audio/2.mp3",
+      "answer": "Dofus",
+      "combination": "dofus:audio:2"
+    },
+    {
+      "round": 33,
+      "type": "audio",
+      "game": "finalfantasy",
+      "difficulty": 3,
+      "content": "games/finalfantasy/audio/3.mp3",
+      "answer": "Final Fantasy",
+      "combination": "finalfantasy:audio:3"
+    },
+    {
+      "round": 34,
+      "type": "audio",
+      "game": "doom",
+      "difficulty": 2,
+      "content": "games/doom/audio/2.mp3",
+      "answer": "DOOM",
+      "combination": "doom:audio:2"
+    },
+    {
+      "round": 35,
+      "type": "audio",
+      "game": "mariokart",
+      "difficulty": 1,
+      "content": "games/mariokart/audio/1.mp3",
+      "answer": "Mario Kart",
+      "combination": "mariokart:audio:1"
+    },
+    {
+      "round": 36,
+      "type": "audio",
+      "game": "eldenringnightreign",
+      "difficulty": 2,
+      "content": "games/eldenringnightreign/audio/2.mp3",
+      "answer": "Elden Ring: Nightreign",
+      "combination": "eldenringnightreign:audio:2"
+    },
+    {
+      "round": 37,
+      "type": "audio",
+      "game": "ghostrunner",
+      "difficulty": 3,
+      "content": "games/ghostrunner/audio/3.mp3",
+      "answer": "Ghostrunner",
+      "combination": "ghostrunner:audio:3"
+    },
+    {
+      "round": 38,
+      "type": "audio",
+      "game": "jetpackjoyride",
+      "difficulty": 1,
+      "content": "games/jetpackjoyride/audio/1.mp3",
+      "answer": "Jetpack Joyride",
+      "combination": "jetpackjoyride:audio:1"
+    },
+    {
+      "round": 39,
+      "type": "audio",
+      "game": "eldenringnightreign",
+      "difficulty": 3,
+      "content": "games/eldenringnightreign/audio/3.mp3",
+      "answer": "Elden Ring: Nightreign",
+      "combination": "eldenringnightreign:audio:3"
+    },
+    {
+      "round": 40,
+      "type": "audio",
+      "game": "baldursgate3",
+      "difficulty": 3,
+      "content": "games/baldursgate3/audio/3.mp3",
+      "answer": "Baldur's Gate 3",
+      "combination": "baldursgate3:audio:3"
+    }
+  ]
+}

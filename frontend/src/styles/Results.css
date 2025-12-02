@@ -80,6 +80,16 @@
   font-family: 'Courier New', monospace;
 }
 
+/* Difficulty display inline - Shows difficulty level next to correct answer */
+.results-difficulty-inline {
+  color: #58a6ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1vw;
+  font-family: 'Courier New', monospace;
+  margin-left: 1vw;
+}
+
 /* Main content - 3-column grid layout (answers | question | leaderboard) */
 .results-main-content {
   display: grid;
@@ -406,6 +416,34 @@
 .results-next-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(88, 166, 255, 0.6);
+}
+
+/* Play Again button - Gold button to start new game with different questions */
+.results-play-again-btn {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
+  color: #0a0818;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Play Again button hover - Lift animation with enhanced glow */
+.results-play-again-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(135deg, #ffe44d 0%, #ffc700 100%);
 }
 
 /* Waiting message - Green info box while waiting for admin */
