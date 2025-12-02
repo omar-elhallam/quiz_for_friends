@@ -124,9 +124,17 @@ class GameSession {
     this.gameState = 'playing';
     this.currentRound = 0;
     
-    // Generate 40 questions dynamically: 20 images + 20 audio
+    // Generate 6 questions dynamically: 3 images + 3 audio (testing mode)
     // Pass the exclude list to avoid repeating questions from previous games
-    this.questions = questionGenerator.generateGameSet(20, 20, this.usedQuestions);
+    this.questions = questionGenerator.generateGameSet(3, 3, this.usedQuestions);
+    
+    // Check if we got enough questions
+    if (this.questions.length === 0) {
+      console.error('ERROR: No questions generated! Cannot start game.');
+      this.gameState = 'waiting';
+      this.io.to(this.roomId).emit('error', { message: 'Failed to generate questions. Please try again.' });
+      return;
+    }
     
     // Track these questions as used
     for (const question of this.questions) {

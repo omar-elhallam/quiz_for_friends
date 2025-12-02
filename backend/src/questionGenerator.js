@@ -61,9 +61,11 @@ class QuestionGenerator {
           }
         }
         
-        // Only add game if it has at least one image or audio file
-        if (gameData.images.length > 0 || gameData.audio.length > 0) {
+        // Only add game if it has at least one image or audio file AND exists in database
+        if ((gameData.images.length > 0 || gameData.audio.length > 0) && gameDatabase[gameFolder]) {
           games[gameFolder] = gameData;
+        } else if (gameData.images.length > 0 || gameData.audio.length > 0) {
+          console.warn(`Warning: Game '${gameFolder}' has media files but is not in gameDatabase.js`);
         }
       }
       
@@ -188,6 +190,13 @@ class QuestionGenerator {
     
     console.log(`Generated ${allQuestions.length} questions (${imageQuestions.length} images, ${audioQuestions.length} audio)`);
     console.log(`Excluded ${excludeList.length} previously used combinations`);
+    
+    // Warn if we didn't generate enough questions
+    const expectedTotal = imageCount + audioCount;
+    if (allQuestions.length < expectedTotal) {
+      console.warn(`WARNING: Expected ${expectedTotal} questions but only generated ${allQuestions.length}`);
+      console.warn(`Missing: ${imageCount - imageQuestions.length} images, ${audioCount - audioQuestions.length} audio`);
+    }
     
     // Log first few questions for debugging
     if (allQuestions.length > 0) {
