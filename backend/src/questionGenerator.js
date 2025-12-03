@@ -5,7 +5,22 @@ const gameDatabase = require('./gameDatabase');
 
 class QuestionGenerator {
   constructor() {
-    this.gamesPath = path.join(__dirname, '../../frontend/public/games');
+    // Check if games folder exists in backend/public first (for deployed environments)
+    // Otherwise fall back to frontend/public/games (for local development)
+    const backendGamesPath = path.join(__dirname, '../public/games');
+    const frontendGamesPath = path.join(__dirname, '../../frontend/public/games');
+    
+    if (fs.existsSync(backendGamesPath)) {
+      this.gamesPath = backendGamesPath;
+      console.log('Using backend games folder:', backendGamesPath);
+    } else if (fs.existsSync(frontendGamesPath)) {
+      this.gamesPath = frontendGamesPath;
+      console.log('Using frontend games folder:', frontendGamesPath);
+    } else {
+      this.gamesPath = backendGamesPath; // Will fail but show clear error
+      console.error('WARNING: No games folder found at either location!');
+    }
+    
     this.gameCache = null;
   }
 

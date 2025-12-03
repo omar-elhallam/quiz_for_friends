@@ -36,6 +36,9 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Serve static games folder (for deployed environments)
+app.use('/games', express.static(path.join(__dirname, 'public/games')));
+
 const gameManager = new GameManager(io);
 
 // Login endpoint
