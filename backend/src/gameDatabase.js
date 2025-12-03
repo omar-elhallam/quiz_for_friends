@@ -301,6 +301,18 @@ const gameDatabase = {
   'dragonquest': {
     displayName: 'Dragon Quest',
     alternatives: ['dragon quest', 'Dragon Quest', 'dragonquest', 'DragonQuest', 'dq', 'DQ']
+  },
+  'sekiro': {
+    displayName: 'Sekiro: Shadows Die Twice',
+    alternatives: ['sekiro', 'Sekiro', 'sekiro shadows die twice', 'Sekiro: Shadows Die Twice', 'shadows die twice']
+  },
+  'nierautomata': {
+    displayName: 'NieR: Automata',
+    alternatives: ['nier automata', 'NieR: Automata', 'nier:automata', 'nierautomata', 'NierAutomata', 'nier', 'Nier']
+  },
+  'outlast': {
+    displayName: 'Outlast',
+    alternatives: ['outlast', 'Outlast']
   }
 };
 

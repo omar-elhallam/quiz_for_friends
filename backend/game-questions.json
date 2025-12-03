@@ -1,55 +1,55 @@
 {
   "roomId": "MAIN",
-  "timestamp": "2025-12-02T23:07:27.975Z",
+  "timestamp": "2025-12-03T21:16:41.218Z",
   "totalRounds": 6,
   "rounds": [
     {
       "round": 1,
       "type": "image",
-      "game": "nomansky",
+      "game": "worldofwarcraft",
       "difficulty": 2,
-      "content": "games/nomansky/images/2.png",
-      "answer": "No Man's Sky"
+      "content": "games/worldofwarcraft/images/2.png",
+      "answer": "World of Warcraft"
     },
     {
       "round": 2,
       "type": "image",
-      "game": "skyrim",
-      "difficulty": 2,
-      "content": "games/skyrim/images/2.png",
-      "answer": "The Elder Scrolls V: Skyrim"
+      "game": "dragonballxenoverse2",
+      "difficulty": 1,
+      "content": "games/dragonballxenoverse2/images/1.png",
+      "answer": "Dragon Ball Xenoverse 2"
     },
     {
       "round": 3,
       "type": "image",
-      "game": "eldenring",
-      "difficulty": 1,
-      "content": "games/eldenring/images/1.png",
-      "answer": "Elden Ring"
+      "game": "ddlc",
+      "difficulty": 2,
+      "content": "games/ddlc/images/2.png",
+      "answer": "Doki Doki Literature Club"
     },
     {
       "round": 4,
       "type": "audio",
-      "game": "assassinscreedodyssee",
-      "difficulty": 1,
-      "content": "games/assassinscreedodyssee/audio/1.mp3",
-      "answer": "Assassin's Creed Odyssey"
+      "game": "fnaf",
+      "difficulty": 3,
+      "content": "games/fnaf/audio/3.mp3",
+      "answer": "Five Nights at Freddy's"
     },
     {
       "round": 5,
       "type": "audio",
-      "game": "ddlc",
-      "difficulty": 1,
-      "content": "games/ddlc/audio/1.mp3",
-      "answer": "Doki Doki Literature Club"
+      "game": "bioshockinfinite",
+      "difficulty": 2,
+      "content": "games/bioshockinfinite/audio/2.mp3",
+      "answer": "Bioshock Infinite"
     },
     {
       "round": 6,
       "type": "audio",
-      "game": "badpiggies",
-      "difficulty": 1,
-      "content": "games/badpiggies/audio/1.mp3",
-      "answer": "Bad Piggies"
+      "game": "streetfighter",
+      "difficulty": 2,
+      "content": "games/streetfighter/audio/2.mp3",
+      "answer": "Street Fighter"
     }
   ]
 }
