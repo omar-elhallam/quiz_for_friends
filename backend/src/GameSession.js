@@ -124,9 +124,9 @@ class GameSession {
     this.gameState = 'playing';
     this.currentRound = 0;
     
-    // Generate 6 questions dynamically: 3 images + 3 audio (testing mode)
+    // Generate 40 questions dynamically: 20 images + 20 audio
     // Pass the exclude list to avoid repeating questions from previous games
-    this.questions = questionGenerator.generateGameSet(3, 3, this.usedQuestions);
+    this.questions = questionGenerator.generateGameSet(20, 20, this.usedQuestions);
     
     // Check if we got enough questions
     if (this.questions.length === 0) {

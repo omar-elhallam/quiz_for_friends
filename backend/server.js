@@ -93,11 +93,19 @@ app.get('/media/:token', (req, res) => {
     return res.status(403).json({ error: 'Invalid or expired token' });
   }
   
-  // Construct full file path
+  // Try backend public folder first (for deployed), then frontend public (for local dev)
+  const backendPath = path.join(__dirname, 'public', filePath);
   const frontendPath = path.join(__dirname, '..', 'frontend', 'public', filePath);
   
-  // Check if file exists
-  if (!fs.existsSync(frontendPath)) {
+  let actualPath;
+  if (fs.existsSync(backendPath)) {
+    actualPath = backendPath;
+  } else if (fs.existsSync(frontendPath)) {
+    actualPath = frontendPath;
+  } else {
+    console.error(`Media file not found: ${filePath}`);
+    console.error(`Checked: ${backendPath}`);
+    console.error(`Checked: ${frontendPath}`);
     return res.status(404).json({ error: 'Media not found' });
   }
   
@@ -108,7 +116,7 @@ app.get('/media/:token', (req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   
   // Serve the file
-  res.sendFile(frontendPath);
+  res.sendFile(actualPath);
 });
 
 // Health check endpoint
